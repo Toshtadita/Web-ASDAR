@@ -2090,3 +2090,89 @@ body {
         max-height: 52px;
     }
 }
+
+
+/* =========================================
+   PÁGINAS INTERNAS
+========================================= */
+
+.navegacion-interna {
+    position: relative;
+}
+
+.menu a.menu-activo {
+    color: #0070c0;
+}
+
+.menu a.menu-activo::after {
+    width: 100%;
+}
+
+.pagina-encabezado {
+    min-height: 390px;
+    padding: 90px 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0, 112, 192, 0.15),
+            transparent 55%
+        ),
+        linear-gradient(
+            135deg,
+            #f7fcfe,
+            #eaf7fb 55%,
+            #eef9ed
+        );
+}
+
+.pagina-encabezado h1 {
+    margin-bottom: 18px;
+
+    color: #0b2d63;
+    font-size: clamp(2.5rem, 6vw, 4.7rem);
+    line-height: 1.05;
+}
+
+.pagina-encabezado > p:last-child {
+    max-width: 720px;
+
+    color: #52606d;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.pagina-contacto {
+    min-height: calc(100vh - 95px);
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 850px) {
+    .navegacion-interna {
+        position: relative;
+    }
+
+    .pagina-encabezado {
+        min-height: 330px;
+        padding: 75px 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .pagina-encabezado {
+        min-height: 300px;
+        padding: 65px 18px;
+    }
+
+    .pagina-encabezado h1 {
+        font-size: clamp(2.2rem, 12vw, 3.2rem);
+    }
+}
