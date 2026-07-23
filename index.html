@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ASDAR | Acueducto La Rápida</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         BARRA DE NAVEGACIÓN
+    ========================================== -->
+    <nav class="navegacion">
+
+        <a href="#" class="marca">
+            <img
+                src="Img/logo-asdar.png"
+                alt="ASDAR - Asociación de Suscriptores de Acueducto La Rápida"
+                class="marca-logo"
+            >
+        </a>
+
+        <div class="menu">
+            <a href="#">Inicio</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#avisos">Avisos</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+
+        <a href="#contacto" class="boton-contacto">
+            Contáctanos
+        </a>
+
+    </nav>
+
+
+    <!-- =========================================
+         PORTADA PRINCIPAL
+    ========================================== -->
+    <header class="hero">
+
+        <!-- Canvas donde JavaScript dibuja los hexágonos -->
+        <canvas id="fondo-interactivo"></canvas>
+
+        <div class="hero-contenido">
+
+            <img
+                src="Img/logo-asdar.png"
+                alt="Logo de ASDAR"
+                class="hero-logo"
+            >
+
+            <p class="hero-etiqueta">
+                Asociación de Suscriptores de Acueducto La Rápida
+            </p>
+
+            <h1>
+                Agua para nuestra comunidad,
+                <span>compromiso con el futuro</span>
+            </h1>
+
+            <p class="hero-descripcion">
+                Prestamos el servicio de acueducto con responsabilidad,
+                participación comunitaria y protección del medioambiente.
+            </p>
+
+            <a href="#nosotros" class="boton-principal">
+                Conoce ASDAR
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         QUIÉNES SOMOS
+    ========================================== -->
+    <section id="nosotros">
+
+        <h2>¿Quiénes somos?</h2>
+
+        <p>
+            ASDAR es la Asociación de Suscriptores de Acueducto
+            La Rápida, una entidad comunitaria sin ánimo de lucro
+            dedicada a administrar, operar, mantener y mejorar el
+            servicio de acueducto.
+        </p>
+
+    </section>
+
+
+    <!-- =========================================
+         SERVICIOS Y ACCESOS RÁPIDOS
+    ========================================== -->
+    <section id="servicios" class="servicios">
+
+        <div class="servicios-encabezado">
+
+            <p class="seccion-etiqueta">
+                Servicios a la comunidad
+            </p>
+
+            <h2>
+                Información y gestiones a tu alcance
+            </h2>
+
+            <p class="servicios-introduccion">
+                Encuentra rápidamente información sobre el servicio,
+                reportes, documentos y novedades de ASDAR.
+            </p>
+
+        </div>
+
+
+        <div class="servicios-grid">
+
+            <!-- Servicio de acueducto -->
+            <article class="servicio-tarjeta">
+
+                <div class="servicio-icono">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M12 2.5C12 2.5 6.5 9 6.5 14A5.5 5.5 0 0 0 17.5 14C17.5 9 12 2.5 12 2.5Z"
+                        ></path>
+
+                        <path
+                            d="M9.5 15.2C9.8 16.5 10.8 17.3 12.2 17.5"
+                        ></path>
+                    </svg>
+
+                </div>
+
+                <h3>Servicio de acueducto</h3>
+
+                <p>
+                    Conoce cómo ASDAR administra, mantiene y mejora
+                    la prestación del servicio en La Rápida.
+                </p>
+
+                <a href="#nosotros" class="servicio-enlace">
+                    Conocer el servicio
+                    <span aria-hidden="true">→</span>
+                </a>
+
+            </article>
+
+
+            <!-- Reportar daños -->
+            <article class="servicio-tarjeta">
+
+                <div class="servicio-icono servicio-icono-verde">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M14.7 6.3A4 4 0 0 0 9.3 11.7L3.5 17.5A2.1 2.1 0 0 0 6.5 20.5L12.3 14.7A4 4 0 0 0 17.7 9.3L15 12L12 9L14.7 6.3Z"
+                        ></path>
+                    </svg>
+
+                </div>
+
+                <h3>Reportar un daño</h3>
+
+                <p>
+                    Informa sobre fugas, daños en las redes o situaciones
+                    que puedan afectar el suministro de agua.
+                </p>
+
+                <a href="#contacto" class="servicio-enlace">
+                    Realizar un reporte
+                    <span aria-hidden="true">→</span>
+                </a>
+
+            </article>
+
+
+            <!-- Documentos -->
+            <article class="servicio-tarjeta">
+
+                <div class="servicio-icono">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M6 2.5H14L19 7.5V21.5H6V2.5Z"
+                        ></path>
+
+                        <path d="M14 2.5V7.5H19"></path>
+                        <path d="M9 12H16"></path>
+                        <path d="M9 16H16"></path>
+                    </svg>
+
+                </div>
+
+                <h3>Documentos</h3>
+
+                <p>
+                    Consulta estatutos, reglamentos, informes y otros
+                    documentos importantes de la asociación.
+                </p>
+
+                <a href="#documentos" class="servicio-enlace">
+                    Consultar documentos
+                    <span aria-hidden="true">→</span>
+                </a>
+
+            </article>
+
+
+            <!-- Avisos -->
+            <article class="servicio-tarjeta">
+
+                <div class="servicio-icono servicio-icono-verde">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M4 13V9L16 4V18L4 13Z"
+                        ></path>
+
+                        <path d="M16 8H19"></path>
+                        <path d="M16 14H19"></path>
+                        <path d="M6 14L7.5 20H11L9.5 15"></path>
+                    </svg>
+
+                </div>
+
+                <h3>Avisos a la comunidad</h3>
+
+                <p>
+                    Revisa información sobre mantenimientos, reuniones,
+                    suspensiones programadas y actividades comunitarias.
+                </p>
+
+                <a href="#avisos" class="servicio-enlace">
+                    Consultar avisos
+                    <span aria-hidden="true">→</span>
+                </a>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         IDENTIDAD INSTITUCIONAL
+    ========================================== -->
+    <section class="identidad">
+
+        <div class="identidad-contenido">
+
+            <div class="identidad-encabezado">
+
+                <p class="identidad-etiqueta">
+                    Nuestra identidad
+                </p>
+
+                <h2>
+                    Comprometidos con el agua,
+                    la comunidad y el futuro
+                </h2>
+
+                <p class="identidad-introduccion">
+                    Nuestro trabajo está orientado por el servicio,
+                    la participación comunitaria y la protección
+                    responsable de los recursos hídricos.
+                </p>
+
+            </div>
+
+
+            <div class="identidad-grid">
+
+                <!-- Misión -->
+                <article class="identidad-tarjeta">
+
+                    <div class="identidad-icono">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <circle cx="12" cy="12" r="8"></circle>
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 2V5"></path>
+                            <path d="M12 19V22"></path>
+                            <path d="M2 12H5"></path>
+                            <path d="M19 12H22"></path>
+                        </svg>
+
+                    </div>
+
+                    <p class="identidad-numero">01</p>
+
+                    <h3>Misión</h3>
+
+                    <p>
+                        Prestar el servicio de acueducto de manera
+                        eficiente, continua y con óptima calidad a la
+                        comunidad de La Rápida, con el apoyo constante
+                        de nuestros suscriptores.
+                    </p>
+
+                </article>
+
+
+                <!-- Visión -->
+                <article class="identidad-tarjeta">
+
+                    <div class="identidad-icono">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M2.5 12C5 7.5 8 5.5 12 5.5C16 5.5 19 7.5 21.5 12C19 16.5 16 18.5 12 18.5C8 18.5 5 16.5 2.5 12Z"
+                            ></path>
+
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+
+                    </div>
+
+                    <p class="identidad-numero">02</p>
+
+                    <h3>Visión 2050</h3>
+
+                    <p>
+                        Sostener y fortalecer la prestación del servicio,
+                        avanzar junto a los desarrollos tecnológicos y
+                        atender responsablemente los requerimientos
+                        legales vigentes.
+                    </p>
+
+                </article>
+
+
+                <!-- Compromiso ambiental -->
+                <article class="identidad-tarjeta identidad-tarjeta-verde">
+
+                    <div class="identidad-icono">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M20 4C12 4 6 7 6 13C6 17 9 20 13 20C19 20 21 13 20 4Z"
+                            ></path>
+
+                            <path d="M4 21C7 16 11 12 17 9"></path>
+                        </svg>
+
+                    </div>
+
+                    <p class="identidad-numero">03</p>
+
+                    <h3>Compromiso ambiental</h3>
+
+                    <p>
+                        Cuidar los recursos hídricos y la microcuenca
+                        de La Rápida, promoviendo la educación ambiental,
+                        la conservación y el desarrollo sostenible de
+                        nuestra comunidad.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- =========================================
+     AVISOS A LA COMUNIDAD
+========================================== -->
+<section id="avisos" class="avisos">
+
+    <div class="avisos-contenido">
+
+        <div class="avisos-encabezado">
+
+            <div>
+
+                <p class="seccion-etiqueta">
+                    Información importante
+                </p>
+
+                <h2>Avisos a la comunidad</h2>
+
+                <p class="avisos-introduccion">
+                    Consulta novedades sobre el servicio, mantenimientos,
+                    reuniones y actividades de ASDAR.
+                </p>
+
+            </div>
+
+            <a href="#contacto" class="avisos-contacto">
+                ¿Tienes alguna duda?
+                <span aria-hidden="true">→</span>
+            </a>
+
+        </div>
+
+
+        <div class="avisos-grid">
+
+            <!-- Aviso principal -->
+            <article class="aviso-principal">
+
+                <div class="aviso-principal-contenido">
+
+                    <div class="aviso-estado">
+                        <span class="aviso-estado-punto"></span>
+                        Espacio para aviso oficial
+                    </div>
+
+                    <p class="aviso-fecha">
+                        Actualización pendiente
+                    </p>
+
+                    <h3>
+                        Aquí aparecerá el aviso más reciente de ASDAR
+                    </h3>
+
+                    <p>
+                        Este espacio podrá utilizarse para informar sobre
+                        suspensiones del servicio, trabajos de mantenimiento,
+                        daños en la red o recomendaciones importantes para
+                        los suscriptores.
+                    </p>
+
+                    <a href="#contacto" class="aviso-enlace">
+                        Contactar a ASDAR
+                        <span aria-hidden="true">→</span>
+                    </a>
+
+                </div>
+
+                <div class="aviso-principal-icono">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path d="M4 13V9L16 4V18L4 13Z"></path>
+                        <path d="M16 8H19"></path>
+                        <path d="M16 14H19"></path>
+                        <path d="M6 14L7.5 20H11L9.5 15"></path>
+                    </svg>
+
+                </div>
+
+            </article>
+
+
+            <!-- Columna de avisos secundarios -->
+            <div class="avisos-secundarios">
+
+                <!-- Reuniones -->
+                <article class="aviso-secundario">
+
+                    <div class="aviso-secundario-icono">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <rect
+                                x="3"
+                                y="5"
+                                width="18"
+                                height="16"
+                                rx="2"
+                            ></rect>
+
+                            <path d="M7 2V8"></path>
+                            <path d="M17 2V8"></path>
+                            <path d="M3 10H21"></path>
+                        </svg>
+
+                    </div>
+
+                    <div>
+
+                        <p class="aviso-tipo">
+                            Reuniones
+                        </p>
+
+                        <h3>Asambleas y actividades</h3>
+
+                        <p>
+                            Aquí se publicarán las fechas y recomendaciones
+                            para las reuniones de la asociación.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Mantenimiento -->
+                <article class="aviso-secundario">
+
+                    <div class="aviso-secundario-icono aviso-icono-verde">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M14.7 6.3A4 4 0 0 0 9.3 11.7L3.5 17.5A2.1 2.1 0 0 0 6.5 20.5L12.3 14.7A4 4 0 0 0 17.7 9.3L15 12L12 9L14.7 6.3Z"
+                            ></path>
+                        </svg>
+
+                    </div>
+
+                    <div>
+
+                        <p class="aviso-tipo">
+                            Mantenimiento
+                        </p>
+
+                        <h3>Trabajos en el acueducto</h3>
+
+                        <p>
+                            En este espacio se comunicarán intervenciones,
+                            reparaciones y mantenimientos programados.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+    <!-- JavaScript al final del documento -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
