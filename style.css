@@ -1460,35 +1460,35 @@ body {
     overflow: hidden;
 
     width: 100%;
-    padding: 110px 5%;
+    padding: 96px 5%;
 
     background:
         radial-gradient(
-            circle at 10% 20%,
-            rgba(0, 168, 232, 0.14),
-            transparent 30%
+            circle at 16% 24%,
+            rgba(0, 168, 232, 0.16),
+            transparent 34%
         ),
         linear-gradient(
             135deg,
             #071e43,
-            #0b2d63 60%,
-            #073763
+            #0b2d63 58%,
+            #06446b
         );
 }
 
 .contacto-contenido {
     width: 100%;
-    max-width: 1250px;
+    max-width: 1280px;
     margin: 0 auto;
 
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1.2fr)
-        minmax(320px, 0.8fr);
+        minmax(0, 1.25fr)
+        minmax(360px, 0.75fr);
 
     align-items: center;
-    gap: 70px;
+    gap: clamp(48px, 6vw, 84px);
 }
 
 
@@ -1540,13 +1540,14 @@ body {
 
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
+    gap: 16px;
 }
 
 
 /* Tarjeta de contacto */
 .contacto-item {
-    padding: 20px;
+    min-height: 98px;
+    padding: 20px 22px;
 
     display: flex;
     align-items: center;
@@ -1637,38 +1638,50 @@ body {
 .boton-whatsapp {
     display: inline-flex;
     align-items: center;
-    gap: 11px;
+    gap: 12px;
 
-    padding: 14px 23px;
+    min-height: 56px;
+    padding: 7px 24px 7px 8px;
 
     color: #ffffff;
-    background-color: #4d9f38;
+    background: linear-gradient(135deg, #25d366, #1dad52);
 
     border-radius: 999px;
 
     box-shadow:
-        0 14px 35px rgba(77, 159, 56, 0.22);
+        0 14px 35px rgba(37, 211, 102, 0.24);
 
     text-decoration: none;
     font-weight: bold;
 
     transition:
         transform 0.25s ease,
-        background-color 0.25s ease;
+        box-shadow 0.25s ease;
 }
 
 .boton-whatsapp:hover {
-    background-color: #38761d;
     transform: translateY(-3px);
+    box-shadow: 0 18px 42px rgba(37, 211, 102, 0.32);
 }
 
-.boton-whatsapp svg {
-    width: 23px;
-    height: 23px;
+.boton-whatsapp-icono {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 42px;
+    color: #20b85a;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.boton-whatsapp-icono svg {
+    width: 25px;
+    height: 25px;
 
     fill: none;
     stroke: currentColor;
-    stroke-width: 1.7;
+    stroke-width: 1.55;
     stroke-linecap: round;
     stroke-linejoin: round;
 }
@@ -1679,7 +1692,7 @@ body {
 ========================================= */
 
 .contacto-panel {
-    padding: 40px;
+    padding: 44px 40px;
 
     color: #0b2d63;
     background:
@@ -1692,14 +1705,14 @@ body {
     border:
         1px solid rgba(255, 255, 255, 0.4);
 
-    border-radius: 30px;
+    border-radius: 28px;
 
     box-shadow:
         0 28px 70px rgba(0, 0, 0, 0.2);
 
     text-align: center;
 
-    transform: rotate(1.5deg);
+    transform: none;
 }
 
 .contacto-logo {
@@ -2149,6 +2162,414 @@ body {
     line-height: 1.7;
 }
 
+/* Imagen principal de la página Nosotros */
+.pagina-encabezado-nosotros {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 820px;
+
+    background-image:
+        linear-gradient(
+            135deg,
+            rgba(5, 32, 67, 0.68),
+            rgba(0, 83, 123, 0.42)
+        ),
+        url("Img/planta-asdar-principal.png");
+    background-position: center 36%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.pagina-encabezado-nosotros .seccion-etiqueta,
+.pagina-encabezado-nosotros h1,
+.pagina-encabezado-nosotros > p:not(.seccion-etiqueta) {
+    position: relative;
+    z-index: 1;
+    color: #ffffff;
+    text-shadow: 0 2px 16px rgba(0, 20, 40, 0.42);
+}
+
+.pagina-encabezado-nosotros .seccion-etiqueta {
+    padding: 9px 20px;
+    color: #ffffff;
+    background: #25865d;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow: 0 6px 18px rgba(0, 45, 33, 0.3);
+}
+
+.pagina-encabezado-nosotros > p:not(.seccion-etiqueta) {
+    color: #f2fbff;
+    font-weight: 600;
+    text-shadow: 0 2px 12px rgba(0, 20, 38, 0.85);
+}
+
+.hero-quienes {
+    position: relative;
+    z-index: 1;
+    width: min(720px, 92%);
+    margin-top: 34px;
+    padding: 24px 30px;
+    color: #ffffff;
+    background: linear-gradient(
+        135deg,
+        rgba(3, 45, 73, 0.88),
+        rgba(18, 75, 72, 0.84)
+    );
+    border: 1px solid rgba(157, 226, 222, 0.42);
+    border-radius: 20px;
+    box-shadow: 0 18px 40px rgba(0, 23, 43, 0.24);
+    backdrop-filter: blur(9px);
+}
+
+.hero-quienes h2 {
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-size: clamp(1.45rem, 2.4vw, 2rem);
+}
+
+.hero-quienes p {
+    margin: 0;
+    color: #effcf9;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+/* Recorrido comunitario: del nacimiento del agua a los hogares */
+.recorrido-agua {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 110px 24px;
+    background:
+        radial-gradient(circle at 10% 18%, rgba(0, 126, 190, 0.15), transparent 28%),
+        radial-gradient(circle at 92% 72%, rgba(64, 157, 102, 0.12), transparent 30%),
+        linear-gradient(180deg, #f5fbff 0%, #edf7f6 100%);
+}
+
+.recorrido-contenido {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+}
+
+.recorrido-presentacion {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: center;
+    gap: clamp(42px, 7vw, 88px);
+}
+
+.recorrido-etiqueta {
+    margin-bottom: 14px;
+    color: #0879b9;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.recorrido-texto h2 {
+    margin-bottom: 24px;
+    color: #0b2d63;
+    font-size: clamp(2.2rem, 4.5vw, 4rem);
+    line-height: 1.05;
+}
+
+.recorrido-texto > p:not(.recorrido-etiqueta) {
+    margin-bottom: 18px;
+    color: #425466;
+    font-size: 1.06rem;
+    line-height: 1.8;
+}
+
+.recorrido-destacada {
+    position: relative;
+    margin: 0;
+}
+
+.recorrido-destacada img {
+    display: block;
+    width: 100%;
+    height: clamp(430px, 50vw, 650px);
+    object-fit: cover;
+    border-radius: 28px;
+    box-shadow: 0 28px 65px rgba(5, 48, 79, 0.2);
+}
+
+.recorrido-destacada figcaption {
+    position: absolute;
+    right: 22px;
+    bottom: 22px;
+    left: 22px;
+    padding: 17px 20px;
+    color: #ffffff;
+    background: rgba(4, 42, 69, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 15px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    backdrop-filter: blur(8px);
+}
+
+.galeria-recorrido {
+    margin-top: 110px;
+}
+
+.galeria-encabezado {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 30px;
+}
+
+.galeria-encabezado h3 {
+    color: #0b2d63;
+    font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+}
+
+.galeria-controles {
+    display: flex;
+    gap: 10px;
+}
+
+.galeria-flecha {
+    display: inline-grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    padding: 0 0 2px;
+    color: #ffffff;
+    background: #0879b9;
+    border: 0;
+    border-radius: 50%;
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.galeria-flecha:hover {
+    background: #075e91;
+    transform: translateY(-2px);
+}
+
+.galeria-flecha:focus-visible,
+.galeria-indicadores button:focus-visible {
+    outline: 3px solid #74c9ed;
+    outline-offset: 3px;
+}
+
+.galeria-ventana {
+    position: relative;
+    overflow: hidden;
+    min-height: 650px;
+    border-radius: 28px;
+    box-shadow: 0 28px 65px rgba(5, 48, 79, 0.18);
+}
+
+.galeria-foto {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.02);
+    transition: opacity 0.45s ease, transform 0.6s ease, visibility 0.45s;
+}
+
+.galeria-foto.activa {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.galeria-foto img {
+    display: block;
+    width: 100%;
+    height: 650px;
+    object-fit: cover;
+}
+
+.galeria-foto figcaption {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 70px 34px 30px;
+    color: #ffffff;
+    background: linear-gradient(transparent, rgba(2, 27, 47, 0.9));
+}
+
+.galeria-foto figcaption strong {
+    font-size: 1.35rem;
+}
+
+.galeria-foto figcaption span {
+    line-height: 1.5;
+}
+
+.galeria-indicadores {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 22px;
+}
+
+.galeria-indicadores button {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    background: #9bb7c3;
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: width 0.25s ease, background 0.25s ease;
+}
+
+.galeria-indicadores button.activo {
+    width: 30px;
+    background: #0879b9;
+}
+
+/* Memoria de la emergencia causada por las lluvias */
+.memoria-emergencia {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 110px 24px;
+    background:
+        radial-gradient(circle at 88% 16%, rgba(0, 126, 190, 0.13), transparent 27%),
+        radial-gradient(circle at 8% 80%, rgba(64, 157, 102, 0.10), transparent 28%),
+        linear-gradient(180deg, #ffffff 0%, #f3f9fc 100%);
+}
+
+.emergencia-presentacion {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    align-items: center;
+    gap: clamp(42px, 7vw, 88px);
+}
+
+.emergencia-destacada {
+    position: relative;
+    margin: 0;
+}
+
+.emergencia-destacada img {
+    display: block;
+    width: 100%;
+    height: clamp(470px, 52vw, 690px);
+    object-fit: cover;
+    border-radius: 28px;
+    box-shadow: 0 28px 65px rgba(45, 37, 18, 0.18);
+}
+
+.emergencia-destacada figcaption {
+    position: absolute;
+    right: 22px;
+    bottom: 22px;
+    left: 22px;
+    padding: 17px 20px;
+    color: #ffffff;
+    background: rgba(67, 48, 21, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 15px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    backdrop-filter: blur(8px);
+}
+
+.emergencia-datos {
+    display: grid;
+    gap: 10px;
+    margin-top: 28px;
+}
+
+.emergencia-datos span {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 13px 16px;
+    color: #344b3e;
+    background: #f0f7f2;
+    border-left: 4px solid #3d8b5b;
+    border-radius: 9px;
+    font-weight: 700;
+}
+
+.emergencia-datos strong {
+    color: #1678ad;
+    font-size: 0.82rem;
+}
+
+.galeria-emergencia .galeria-flecha,
+.galeria-emergencia .galeria-indicadores button.activo {
+    background: #3d8b5b;
+}
+
+.galeria-emergencia .galeria-flecha:hover {
+    background: #2d6d45;
+}
+
+@media (max-width: 850px) {
+    .recorrido-agua {
+        padding: 85px 20px;
+    }
+
+    .recorrido-presentacion {
+        grid-template-columns: 1fr;
+    }
+
+    .memoria-emergencia {
+        padding: 85px 20px;
+    }
+
+    .emergencia-presentacion {
+        grid-template-columns: 1fr;
+    }
+
+    .galeria-recorrido {
+        margin-top: 80px;
+    }
+
+    .galeria-ventana,
+    .galeria-foto img {
+        min-height: 520px;
+        height: 520px;
+    }
+}
+
+@media (max-width: 600px) {
+    .galeria-encabezado {
+        align-items: flex-start;
+    }
+
+    .galeria-controles {
+        flex-shrink: 0;
+    }
+
+    .galeria-flecha {
+        width: 44px;
+        height: 44px;
+    }
+
+    .galeria-ventana,
+    .galeria-foto img {
+        min-height: 430px;
+        height: 430px;
+    }
+
+    .galeria-foto figcaption {
+        padding: 64px 22px 22px;
+    }
+}
+
 .pagina-contacto {
     min-height: calc(100vh - 95px);
     display: flex;
@@ -2164,6 +2585,11 @@ body {
         min-height: 330px;
         padding: 75px 20px;
     }
+
+    .pagina-encabezado-nosotros {
+        min-height: 700px;
+        background-position: 58% 38%;
+    }
 }
 
 @media (max-width: 600px) {
@@ -2174,5 +2600,15 @@ body {
 
     .pagina-encabezado h1 {
         font-size: clamp(2.2rem, 12vw, 3.2rem);
+    }
+
+    .pagina-encabezado-nosotros {
+        min-height: 650px;
+        background-position: 62% 40%;
+    }
+
+    .hero-quienes {
+        margin-top: 26px;
+        padding: 20px;
     }
 }
