@@ -1675,17 +1675,12 @@ body {
     border-radius: 50%;
 }
 
-.boton-whatsapp-icono svg {
+.boton-whatsapp-icono img {
+    /* El tamaño fijo mantiene centrado el logotipo oficial dentro del círculo blanco. */
+    display: block;
     width: 25px;
     height: 25px;
-
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.55;
-    stroke-linecap: round;
-    stroke-linejoin: round;
 }
-
 
 /* =========================================
    PANEL DERECHO
@@ -2105,6 +2100,12 @@ body {
 }
 
 
+/*
+    HOJA DE ESTILOS PRINCIPAL DE ASDAR
+    Las clases agrupan la apariencia por secciones. Los bloques @media ubicados
+    más adelante adaptan esas mismas secciones a tabletas y teléfonos.
+*/
+
 /* =========================================
    PÁGINAS INTERNAS
 ========================================= */
@@ -2235,6 +2236,95 @@ body {
     line-height: 1.65;
 }
 
+/* =========================================
+   HISTORIA Y PLACA DE FUNDACIÓN
+   Esta sección usa dos columnas en pantallas grandes y una sola en celulares.
+========================================= */
+.historia-asdar {
+    padding: 105px 24px;
+    background: linear-gradient(135deg, #eef8fc 0%, #f5fbf6 100%);
+}
+
+.historia-contenido {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+    align-items: center;
+    gap: clamp(46px, 7vw, 90px);
+}
+
+.historia-placa {
+    margin: 0;
+    padding: 14px;
+    background: #ffffff;
+    border: 1px solid rgba(8, 121, 185, 0.15);
+    border-radius: 30px;
+    box-shadow: 0 24px 60px rgba(11, 45, 99, 0.14);
+    transform: rotate(-1.2deg);
+}
+
+.historia-placa img {
+    display: block;
+    width: 100%;
+    max-height: 690px;
+    object-fit: contain;
+    border-radius: 20px;
+}
+
+.historia-placa figcaption {
+    padding: 14px 8px 4px;
+    color: #5b6b7a;
+    font-size: 0.88rem;
+    text-align: center;
+}
+
+.historia-texto h2 {
+    max-width: 680px;
+    margin-bottom: 24px;
+    color: #0b2d63;
+    font-size: clamp(2.2rem, 4.5vw, 4rem);
+    line-height: 1.05;
+}
+
+.historia-texto > p:not(.recorrido-etiqueta) {
+    max-width: 680px;
+    margin-bottom: 18px;
+    color: #425466;
+    font-size: 1.06rem;
+    line-height: 1.8;
+}
+
+.historia-texto strong {
+    color: #0879b9;
+}
+
+.historia-fecha {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 10px 18px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #0879b9, #2f9464);
+    border-radius: 999px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+}
+
+@media (max-width: 850px) {
+    .historia-asdar {
+        padding: 80px 20px;
+    }
+
+    .historia-contenido {
+        grid-template-columns: 1fr;
+    }
+
+    .historia-placa {
+        width: min(560px, 100%);
+        margin: 0 auto;
+        transform: none;
+    }
+}
 /* Recorrido comunitario: del nacimiento del agua a los hogares */
 .recorrido-agua {
     position: relative;
@@ -2329,8 +2419,15 @@ body {
 }
 
 .galeria-controles {
+    /* El contenedor ocupa toda la imagen y separa una flecha a cada lado. */
+    position: absolute;
+    inset: 0;
+    z-index: 3;
     display: flex;
-    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+    pointer-events: none;
 }
 
 .galeria-flecha {
@@ -2338,22 +2435,25 @@ body {
     place-items: center;
     width: 52px;
     height: 52px;
-    padding: 0 0 2px;
+    padding: 0 0 3px;
     color: #ffffff;
-    background: #0879b9;
-    border: 0;
+    background: rgba(4, 42, 69, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     font-family: Arial, sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.55rem;
     line-height: 1;
     text-align: center;
     cursor: pointer;
+    pointer-events: auto;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 24px rgba(2, 27, 47, 0.28);
     transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .galeria-flecha:hover {
-    background: #075e91;
-    transform: translateY(-2px);
+    background: rgba(8, 121, 185, 0.95);
+    transform: scale(1.08);
 }
 
 .galeria-flecha:focus-visible,
@@ -2366,6 +2466,9 @@ body {
     position: relative;
     overflow: hidden;
     min-height: 650px;
+    /* Permite desplazar la página verticalmente y reservar el gesto horizontal para la galería. */
+    touch-action: pan-y;
+    user-select: none;
     border-radius: 28px;
     box-shadow: 0 28px 65px rgba(5, 48, 79, 0.18);
 }
@@ -2610,5 +2713,19 @@ body {
     .hero-quienes {
         margin-top: 26px;
         padding: 20px;
+    }
+}
+
+
+/* En celulares las flechas se acercan a los bordes y ocupan menos espacio. */
+@media (max-width: 600px) {
+    .galeria-controles {
+        padding: 0 10px;
+    }
+
+    .galeria-flecha {
+        width: 44px;
+        height: 44px;
+        font-size: 1.35rem;
     }
 }

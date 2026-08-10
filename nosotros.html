@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Menú interno: la clase menu-activo identifica visualmente la página actual. -->
     <nav class="navegacion navegacion-interna">
         <a href="index.html" class="marca"><img src="Img/logo-asdar.png" alt="Logo de ASDAR" class="marca-logo"></a>
         <div class="menu">
@@ -17,6 +18,7 @@
         <a href="contacto.html" class="boton-contacto">Contáctanos</a>
     </nav>
 
+    <!-- Portada de Nosotros: combina la fotografía principal con la presentación de la asociación. -->
     <header class="pagina-encabezado pagina-encabezado-nosotros">
         <p class="seccion-etiqueta">Nuestra asociación</p>
         <h1>Conoce a ASDAR</h1>
@@ -30,7 +32,34 @@
             </p>
         </div>
     </header>
+    <!-- Historia de ASDAR: la placa conserva la fecha de fundación y reconoce a quienes iniciaron la asociación. -->
+    <section class="historia-asdar" aria-labelledby="historia-titulo">
+        <div class="historia-contenido">
+            <figure class="historia-placa">
+                <!-- loading="lazy" evita cargar esta fotografía hasta que el visitante se acerque a la sección. -->
+                <img src="Img/historia/placa-fundacion-asdar.jpeg" alt="Placa conmemorativa de la fundación de ASDAR el 27 de julio de 2007" loading="lazy">
+                <figcaption>Placa conmemorativa de la fundación de ASDAR.</figcaption>
+            </figure>
 
+            <div class="historia-texto">
+                <p class="recorrido-etiqueta">Nuestra historia</p>
+                <h2 id="historia-titulo">El día en que comenzó un compromiso comunitario</h2>
+                <p>
+                    ASDAR fue fundada el <strong>27 de julio de 2007</strong> gracias al compromiso
+                    de personas de La Rápida que se organizaron para fortalecer y cuidar el
+                    acueducto comunitario.
+                </p>
+                <p>
+                    Esta placa conserva la memoria de quienes dieron los primeros pasos y nos
+                    recuerda que el servicio que hoy protegemos nació del trabajo colectivo,
+                    la responsabilidad y el amor por nuestra comunidad.
+                </p>
+                <span class="historia-fecha" aria-label="Fecha de fundación: 27 de julio de 2007">27 · 07 · 2007</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Relato fotográfico sobre educación ambiental y el recorrido hacia el nacimiento del agua. -->
     <section class="recorrido-agua" aria-labelledby="recorrido-titulo">
         <div class="recorrido-contenido">
             <div class="recorrido-presentacion">
@@ -62,13 +91,14 @@
                         <p class="recorrido-etiqueta">Memoria fotográfica</p>
                         <h3>Un recorrido que nos conecta con el agua</h3>
                     </div>
-                    <div class="galeria-controles">
-                        <button type="button" class="galeria-flecha" data-anterior aria-label="Fotografía anterior">←</button>
-                        <button type="button" class="galeria-flecha" data-siguiente aria-label="Fotografía siguiente">→</button>
-                    </div>
                 </div>
 
-                <div class="galeria-ventana" aria-live="polite">
+                <div class="galeria-ventana" aria-live="off">
+                    <!-- Controles superpuestos: las entidades HTML evitan que las flechas se dañen por codificación. -->
+                    <div class="galeria-controles">
+                        <button type="button" class="galeria-flecha" data-anterior aria-label="Fotografía anterior">&larr;</button>
+                        <button type="button" class="galeria-flecha" data-siguiente aria-label="Fotografía siguiente">&rarr;</button>
+                    </div>
                     <figure class="galeria-foto activa">
                         <img src="Img/recorrido-agua/sam_0692.jpg" alt="Participantes caminando por un sendero rodeado de bosque">
                         <figcaption><strong>El camino hacia la fuente</strong><span>Recorrido comunitario por el bosque que protege el nacimiento del agua.</span></figcaption>
@@ -104,6 +134,7 @@
         </div>
     </section>
 
+    <!-- Memoria de la respuesta comunitaria ante lluvias y afectaciones del acueducto. -->
     <section class="memoria-emergencia" aria-labelledby="emergencia-titulo">
         <div class="recorrido-contenido">
             <div class="emergencia-presentacion">
@@ -143,13 +174,14 @@
                         <p class="recorrido-etiqueta">Memoria de la intervención</p>
                         <h3>De la emergencia a la recuperación</h3>
                     </div>
-                    <div class="galeria-controles">
-                        <button type="button" class="galeria-flecha" data-anterior aria-label="Fotografía anterior">←</button>
-                        <button type="button" class="galeria-flecha" data-siguiente aria-label="Fotografía siguiente">→</button>
-                    </div>
                 </div>
 
-                <div class="galeria-ventana" aria-live="polite">
+                <div class="galeria-ventana" aria-live="off">
+                    <!-- Controles superpuestos: las entidades HTML evitan que las flechas se dañen por codificación. -->
+                    <div class="galeria-controles">
+                        <button type="button" class="galeria-flecha" data-anterior aria-label="Fotografía anterior">&larr;</button>
+                        <button type="button" class="galeria-flecha" data-siguiente aria-label="Fotografía siguiente">&rarr;</button>
+                    </div>
                     <figure class="galeria-foto activa">
                         <img src="Img/emergencia-lluvias/sam_1055.jpg" alt="Equipo de trabajo inspeccionando y limpiando el cauce después de las lluvias">
                         <figcaption><strong>Atención de la emergencia</strong><span>El equipo ingresó a la quebrada para evaluar la afectación y despejar la corriente.</span></figcaption>
@@ -185,6 +217,7 @@
         </div>
     </section>
 
+    <!-- Misión, visión y compromiso: resume los principios que orientan a ASDAR. -->
     <section class="identidad">
 
         <div class="identidad-contenido">
@@ -313,11 +346,14 @@
 
     </section>
 
+    <!-- Pie de página compartido con el resto del sitio. -->
     <footer class="pie-pagina"><div class="pie-contenido">
         <a href="index.html" class="pie-marca"><img src="Img/logo-asdar.png" alt="ASDAR" class="pie-logo"><span class="pie-marca-texto"><strong>ASDAR</strong><small>Acueducto La Rápida</small></span></a>
         <div class="pie-enlaces"><a href="index.html">Inicio</a><a href="avisos.html">Avisos</a><a href="documentos.html">Documentos</a><a href="contacto.html">Contacto</a></div>
         <p class="pie-legal">© 2026 ASDAR.<br>Todos los derechos reservados.</p>
     </div></footer>
+    <!-- Controla de forma independiente cada galería fotográfica de esta página. -->
     <script src="nosotros.js"></script>
 </body>
 </html>
+
