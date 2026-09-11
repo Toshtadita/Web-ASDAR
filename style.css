@@ -8,6 +8,7 @@
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
@@ -2727,5 +2728,120 @@ body {
         width: 44px;
         height: 44px;
         font-size: 1.35rem;
+    }
+}
+
+
+/* =========================================
+   AVISO DESTACADO: CUIDEMOS EL AGUA
+========================================= */
+
+.avisos-grid {
+    grid-template-columns: 1fr;
+}
+
+.aviso-principal {
+    grid-column: 1 / -1;
+    min-height: auto;
+    padding: 0;
+
+    display: grid;
+    grid-template-columns: minmax(320px, 0.85fr) minmax(0, 1.15fr);
+    align-items: stretch;
+    gap: 0;
+}
+
+.aviso-principal-imagen {
+    position: relative;
+    z-index: 1;
+
+    margin: 0;
+    padding: 24px;
+
+    display: grid;
+    place-items: center;
+
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.aviso-principal-imagen img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 560px;
+
+    object-fit: contain;
+    border-radius: 20px;
+
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.22);
+}
+
+.aviso-principal-contenido {
+    max-width: none;
+    padding: 48px;
+}
+
+.aviso-principal h3 {
+    max-width: 680px;
+}
+
+.aviso-principal-contenido .aviso-texto {
+    max-width: 720px;
+    margin-bottom: 18px;
+}
+
+.aviso-principal-contenido .aviso-texto strong,
+.aviso-firma strong {
+    color: #ffffff;
+}
+
+.aviso-principal-contenido .aviso-firma {
+    max-width: 720px;
+    margin: 26px 0 0;
+    padding-top: 20px;
+
+    color: #ffffff;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    line-height: 1.6;
+}
+
+.avisos-secundarios {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+    .aviso-principal {
+        grid-template-columns: 1fr;
+    }
+
+    .aviso-principal-imagen {
+        padding: 24px 24px 0;
+    }
+
+    .aviso-principal-imagen img {
+        width: min(100%, 520px);
+    }
+}
+
+@media (max-width: 600px) {
+    .aviso-principal-imagen {
+        padding: 16px 16px 0;
+    }
+
+    .aviso-principal-imagen img {
+        border-radius: 16px;
+    }
+
+    .aviso-principal-contenido {
+        padding: 30px 24px 34px;
+    }
+
+    .aviso-principal h3 {
+        font-size: 2rem;
+    }
+
+    .avisos-secundarios {
+        grid-template-columns: 1fr;
     }
 }
