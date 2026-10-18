@@ -2845,3 +2845,836 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* =========================================================================
+   MEJORAS 2026
+   Este bloque va al final a propósito: sus reglas reemplazan a las anteriores
+   cuando ambas apuntan al mismo elemento.
+========================================================================= */
+
+/* ---------- Tipografía general ---------- */
+
+body {
+    font-family: "Plus Jakarta Sans", Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2 {
+    letter-spacing: -0.02em;
+}
+
+/* Contorno visible al navegar con teclado (accesibilidad). */
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid #00a8e8;
+    outline-offset: 3px;
+    border-radius: 8px;
+}
+
+
+/* ---------- Navegación fija y compacta ---------- */
+
+.navegacion,
+.navegacion-interna {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    transition: min-height 0.25s ease, box-shadow 0.25s ease;
+}
+
+.navegacion .marca-logo {
+    transition: height 0.25s ease, transform 0.25s ease, filter 0.25s ease;
+}
+
+.navegacion.navegacion-compacta {
+    min-height: 70px;
+    box-shadow: 0 10px 30px rgba(11, 45, 99, 0.12);
+}
+
+.navegacion.navegacion-compacta .marca-logo {
+    height: 52px;
+}
+
+
+/* ---------- Botón hamburguesa ---------- */
+
+.menu-boton {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+
+    background: #ffffff;
+    border: 1px solid rgba(0, 112, 192, 0.22);
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(11, 45, 99, 0.08);
+
+    cursor: pointer;
+}
+
+.menu-boton span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 2px;
+    background: #0b2d63;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.menu-abierto .menu-boton span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menu-abierto .menu-boton span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-abierto .menu-boton span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 850px) {
+    .navegacion {
+        gap: 12px;
+    }
+
+    .menu-boton {
+        display: inline-flex;
+    }
+
+    .boton-contacto {
+        margin-left: auto;
+    }
+
+    /* El menú se convierte en un panel desplegable debajo de la barra. */
+    .menu {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 16px;
+        right: 16px;
+
+        padding: 10px;
+
+        background: #ffffff;
+        border: 1px solid rgba(0, 112, 192, 0.14);
+        border-radius: 20px;
+        box-shadow: 0 24px 50px rgba(11, 45, 99, 0.18);
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    }
+
+    .menu-abierto .menu {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+
+    .menu a {
+        padding: 14px 16px;
+        border-radius: 12px;
+        font-size: 1.05rem;
+    }
+
+    .menu a::after {
+        display: none;
+    }
+
+    .menu a:hover,
+    .menu a.menu-activo {
+        background: #eaf7fb;
+    }
+}
+
+@media (max-width: 380px) {
+    .boton-contacto {
+        display: none;
+    }
+
+    .menu-boton {
+        margin-left: auto;
+    }
+}
+
+
+/* ---------- Franja de aviso ---------- */
+
+.franja-aviso {
+    position: relative;
+    z-index: 60;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 52px 10px 5%;
+
+    color: #ffffff;
+    background: linear-gradient(90deg, #0b2d63 0%, #0a4f8f 55%, #1f7a55 100%);
+    font-size: 0.93rem;
+}
+
+.franja-contenido {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px 16px;
+    text-align: center;
+}
+
+.franja-contenido p {
+    line-height: 1.45;
+}
+
+.franja-pago {
+    padding-left: 14px;
+    margin-left: 6px;
+    border-left: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.franja-etiqueta {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 4px 11px;
+
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.franja-punto {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ffb547;
+    box-shadow: 0 0 0 0 rgba(255, 181, 71, 0.7);
+    animation: pulso-aviso 2s infinite;
+}
+
+@keyframes pulso-aviso {
+    0% { box-shadow: 0 0 0 0 rgba(255, 181, 71, 0.7); }
+    70% { box-shadow: 0 0 0 8px rgba(255, 181, 71, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 181, 71, 0); }
+}
+
+.franja-enlace {
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    white-space: nowrap;
+}
+
+.franja-cerrar {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+
+    width: 32px;
+    height: 32px;
+
+    color: #ffffff;
+    background: transparent;
+    border: 0;
+    border-radius: 50%;
+
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.franja-cerrar:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 600px) {
+    .franja-aviso {
+        justify-content: flex-start;
+        padding: 10px 46px 10px 16px;
+        font-size: 0.86rem;
+    }
+
+    .franja-contenido {
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+    .franja-pago {
+        display: block;
+        padding-left: 0;
+        margin-left: 0;
+        border-left: 0;
+    }
+}
+
+
+/* ---------- Portada del Inicio ---------- */
+
+.pagina-inicio .hero {
+    min-height: calc(100svh - 95px);
+    padding: 70px 20px 70px;
+}
+
+.hero-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.boton-principal {
+    box-shadow: 0 10px 24px rgba(0, 112, 192, 0.28);
+}
+
+.boton-secundario {
+    display: inline-block;
+    padding: 14px 26px;
+
+    color: #0b2d63;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(11, 45, 99, 0.18);
+    border-radius: 999px;
+
+    font-weight: 700;
+    text-decoration: none;
+
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.boton-secundario:hover {
+    background: #ffffff;
+    border-color: #0070c0;
+    transform: translateY(-3px);
+}
+
+/* Entrada suave del contenido de la portada al cargar la página. */
+@media (prefers-reduced-motion: no-preference) {
+    .hero-contenido > * {
+        animation: entrada-hero 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    }
+
+    .hero-contenido > :nth-child(2) { animation-delay: 0.08s; }
+    .hero-contenido > :nth-child(3) { animation-delay: 0.16s; }
+    .hero-contenido > :nth-child(4) { animation-delay: 0.24s; }
+    .hero-contenido > :nth-child(5) { animation-delay: 0.32s; }
+}
+
+@keyframes entrada-hero {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .pagina-inicio .hero {
+        min-height: auto;
+        padding: 56px 18px 64px;
+    }
+
+    .hero-acciones a {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
+
+/* ---------- Aparición al hacer scroll ---------- */
+
+.js-aparecer [data-aparecer] {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+        opacity 0.7s ease var(--retraso, 0ms),
+        transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--retraso, 0ms);
+}
+
+.js-aparecer [data-aparecer].visible {
+    opacity: 1;
+    transform: none;
+}
+
+
+/* ---------- Tarjetas de servicios ---------- */
+
+.servicio-tarjeta {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.servicio-tarjeta:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0, 112, 192, 0.28);
+    box-shadow: 0 22px 44px rgba(11, 45, 99, 0.12);
+}
+
+/* Al usar transform en hover, evitamos conflicto con la animación de aparición. */
+.js-aparecer .servicio-tarjeta.visible:hover {
+    transform: translateY(-6px);
+}
+
+
+/* ---------- Sección: la planta ---------- */
+
+.inicio-planta {
+    padding: 110px 5%;
+    background: #ffffff;
+}
+
+.inicio-planta-contenido {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+    gap: clamp(40px, 6vw, 80px);
+
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.inicio-planta-foto {
+    position: relative;
+    margin: 0;
+}
+
+.inicio-planta-foto img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+
+    border-radius: 28px;
+    box-shadow: 0 30px 60px rgba(11, 45, 99, 0.18);
+}
+
+.inicio-planta-foto figcaption {
+    position: absolute;
+    left: 22px;
+    bottom: 22px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px 18px 12px 12px;
+
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(11, 45, 99, 0.18);
+    backdrop-filter: blur(8px);
+}
+
+.inicio-planta-foto figcaption span:last-child {
+    display: flex;
+    flex-direction: column;
+    color: #52606d;
+    font-size: 0.85rem;
+}
+
+.inicio-planta-foto figcaption strong {
+    color: #0b2d63;
+    font-size: 0.98rem;
+}
+
+.inicio-planta-sello {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: #0070c0;
+}
+
+.inicio-planta-sello svg,
+.inicio-consejo-icono svg,
+.inicio-pago-icono svg,
+.boton-telefono svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.inicio-planta-sello svg {
+    color: #ffffff;
+}
+
+.inicio-planta-texto h2 {
+    margin-bottom: 20px;
+    color: #0b2d63;
+    font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+    line-height: 1.15;
+}
+
+.inicio-planta-texto > p:not(.seccion-etiqueta) {
+    margin-bottom: 14px;
+    color: #52606d;
+    font-size: 1.05rem;
+    line-height: 1.75;
+}
+
+.inicio-cifras {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 30px 0;
+}
+
+.inicio-cifras div {
+    padding: 18px 16px;
+    background: linear-gradient(160deg, #f2fafd, #eef8ee);
+    border: 1px solid rgba(0, 112, 192, 0.12);
+    border-radius: 18px;
+}
+
+.inicio-cifras dt {
+    margin-bottom: 6px;
+    color: #0070c0;
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.inicio-cifras div:nth-child(2) dt {
+    color: #25865d;
+}
+
+.inicio-cifras dd {
+    color: #52606d;
+    font-size: 0.86rem;
+    line-height: 1.45;
+}
+
+.enlace-flecha {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #0070c0;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.enlace-flecha span {
+    transition: transform 0.25s ease;
+}
+
+.enlace-flecha:hover span {
+    transform: translateX(4px);
+}
+
+
+/* ---------- Sección: aviso destacado ---------- */
+
+.inicio-aviso {
+    position: relative;
+    overflow: hidden;
+    padding: 110px 5%;
+
+    color: #ffffff;
+    background:
+        radial-gradient(circle at 85% 15%, rgba(0, 168, 232, 0.25), transparent 45%),
+        radial-gradient(circle at 10% 90%, rgba(106, 168, 79, 0.22), transparent 45%),
+        #0b2d63;
+}
+
+.inicio-aviso-contenido {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(40px, 6vw, 80px);
+
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+.inicio-aviso-imagen {
+    margin: 0;
+}
+
+.inicio-aviso-imagen img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 26px;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
+    transform: rotate(-2deg);
+    transition: transform 0.4s ease;
+}
+
+.inicio-aviso-imagen img:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+.inicio-aviso-estado {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 18px;
+    padding: 7px 14px;
+
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.inicio-aviso-texto h2 {
+    margin-bottom: 18px;
+    font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+    line-height: 1.15;
+}
+
+.inicio-aviso-intro {
+    margin-bottom: 24px;
+    color: #cfe3f5;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.inicio-consejos {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 24px;
+    list-style: none;
+}
+
+.inicio-consejos li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 12px 16px 12px 12px;
+
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+
+    font-weight: 600;
+}
+
+.inicio-consejo-icono {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    color: #7fd3ff;
+    background: rgba(0, 168, 232, 0.16);
+    border-radius: 12px;
+}
+
+.inicio-pago {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 30px;
+    padding: 16px 18px;
+
+    color: #0b2d63;
+    background: #fff4e2;
+    border-radius: 16px;
+    line-height: 1.55;
+}
+
+.inicio-pago-icono {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    color: #ffffff;
+    background: #f08a00;
+    border-radius: 12px;
+}
+
+.boton-claro {
+    display: inline-block;
+    padding: 14px 26px;
+
+    color: #0b2d63;
+    background: #ffffff;
+    border-radius: 999px;
+
+    font-weight: 700;
+    text-decoration: none;
+
+    transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.boton-claro:hover {
+    background: #eaf7fb;
+    transform: translateY(-3px);
+}
+
+
+/* ---------- Sección: reportar un daño ---------- */
+
+.inicio-reporte {
+    padding: 90px 5%;
+    background: linear-gradient(180deg, #f5fbfe 0%, #ffffff 100%);
+    scroll-margin-top: 80px;
+}
+
+.inicio-reporte-contenido {
+    display: grid;
+    grid-template-columns: 1.3fr auto;
+    align-items: center;
+    gap: 40px;
+
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: clamp(32px, 5vw, 56px);
+
+    background: #ffffff;
+    border: 1px solid rgba(0, 112, 192, 0.14);
+    border-radius: 32px;
+    box-shadow: 0 24px 60px rgba(11, 45, 99, 0.1);
+}
+
+.inicio-reporte h2 {
+    margin-bottom: 14px;
+    color: #0b2d63;
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    line-height: 1.2;
+}
+
+.inicio-reporte-contenido > div > p:not(.seccion-etiqueta) {
+    max-width: 560px;
+    color: #52606d;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.inicio-reporte-acciones {
+    display: grid;
+    gap: 12px;
+}
+
+.boton-whatsapp-inicio,
+.boton-telefono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 15px 26px;
+    border-radius: 999px;
+
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.boton-whatsapp-inicio {
+    color: #ffffff;
+    background: #1fa855;
+    box-shadow: 0 10px 24px rgba(31, 168, 85, 0.3);
+}
+
+.boton-whatsapp-inicio:hover {
+    background: #178a45;
+    transform: translateY(-3px);
+}
+
+.boton-telefono {
+    color: #0b2d63;
+    background: #eaf7fb;
+    border: 1px solid rgba(0, 112, 192, 0.2);
+}
+
+.boton-telefono:hover {
+    background: #dff1fa;
+    transform: translateY(-3px);
+}
+
+
+/* ---------- Adaptación de las secciones nuevas ---------- */
+
+@media (max-width: 900px) {
+    .inicio-planta-contenido,
+    .inicio-aviso-contenido,
+    .inicio-reporte-contenido {
+        grid-template-columns: 1fr;
+    }
+
+    .inicio-aviso-imagen {
+        max-width: 460px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .inicio-planta,
+    .inicio-aviso {
+        padding: 80px 18px;
+    }
+
+    .inicio-reporte {
+        padding: 64px 18px;
+    }
+
+    .inicio-cifras {
+        grid-template-columns: 1fr;
+    }
+
+    .inicio-cifras div {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .inicio-cifras dt {
+        min-width: 86px;
+        margin-bottom: 0;
+        font-size: 1.6rem;
+    }
+
+    .inicio-planta-foto figcaption {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+    }
+
+    .inicio-reporte-contenido {
+        border-radius: 24px;
+    }
+
+    .boton-whatsapp-inicio,
+    .boton-telefono {
+        white-space: normal;
+    }
+}

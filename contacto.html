@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ASDAR | Contacto</title><link rel="stylesheet" href="style.css"></head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ASDAR | Contacto</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head>
 <body>
     <!-- Navegación principal. La clase menu-activo muestra en qué página estamos. -->
-    <nav class="navegacion navegacion-interna"><a href="index.html" class="marca"><img src="Img/logo-asdar.png" alt="Logo de ASDAR" class="marca-logo"></a><div class="menu"><a href="index.html">Inicio</a><a href="nosotros.html">Nosotros</a><a href="avisos.html">Avisos</a><a href="documentos.html">Documentos</a><a href="contacto.html" class="menu-activo">Contacto</a></div><a href="contacto.html" class="boton-contacto">Contáctanos</a></nav>
+    <nav class="navegacion navegacion-interna"><a href="index.html" class="marca"><img src="Img/logo-asdar.png" alt="Logo de ASDAR" class="marca-logo"></a><div class="menu" id="menu-principal"><a href="index.html">Inicio</a><a href="nosotros.html">Nosotros</a><a href="avisos.html">Avisos</a><a href="documentos.html">Documentos</a><a href="contacto.html" class="menu-activo" aria-current="page">Contacto</a></div><a href="contacto.html" class="boton-contacto">Contáctanos</a><button type="button" class="menu-boton" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span></button></nav>
     <!-- Área principal de contacto: datos directos a la izquierda e identidad institucional a la derecha. -->
     <main class="contacto pagina-contacto">
         <div class="contacto-contenido">
@@ -78,6 +78,8 @@
     </main>
     <!-- Pie de página compartido con el resto del sitio. -->
     <footer class="pie-pagina"><div class="pie-contenido"><a href="index.html" class="pie-marca"><img src="Img/logo-asdar.png" alt="ASDAR" class="pie-logo"><span class="pie-marca-texto"><strong>ASDAR</strong><small>Acueducto La Rápida</small></span></a><div class="pie-enlaces"><a href="index.html">Inicio</a><a href="nosotros.html">Nosotros</a><a href="avisos.html">Avisos</a><a href="documentos.html">Documentos</a></div><p class="pie-legal">© 2026 ASDAR.<br>Todos los derechos reservados.</p></div></footer>
+    <!-- Menú móvil y funciones compartidas. -->
+    <script src="menu.js"></script>
 </body>
 </html>
 

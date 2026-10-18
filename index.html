@@ -4,22 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASDAR | Inicio</title>
+    <meta name="description" content="ASDAR, Asociación de Suscriptores de Acueducto La Rápida: servicio de acueducto comunitario, avisos, documentos y contacto.">
+    <!-- Tipografía del sitio (Google Fonts). Si no carga, se usa Arial como respaldo. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="pagina-inicio">
+    <!-- Franja de aviso vigente. Para cambiarla, edita el texto y el valor de data-franja
+         (al cambiar ese valor, la franja vuelve a mostrarse a quienes la habían cerrado). -->
+    <div class="franja-aviso" data-franja="fenomeno-nino-2026" role="region" aria-label="Aviso vigente">
+        <div class="franja-contenido">
+            <span class="franja-etiqueta"><span class="franja-punto" aria-hidden="true"></span>Aviso vigente</span>
+            <p>
+                <strong>Fenómeno del Niño:</strong> cuidemos juntos el agua.
+                <span class="franja-pago">El pago del servicio se realiza <strong>todos los fines de semana</strong>.</span>
+            </p>
+            <a href="avisos.html" class="franja-enlace">Ver aviso <span aria-hidden="true">→</span></a>
+        </div>
+        <button type="button" class="franja-cerrar" data-cerrar-franja aria-label="Cerrar aviso">&times;</button>
+    </div>
+
     <!-- Navegación principal: se repite en todas las páginas para mantener una experiencia consistente. -->
     <nav class="navegacion">
         <a href="index.html" class="marca">
             <img src="Img/logo-asdar.png" alt="Logo de ASDAR" class="marca-logo">
         </a>
-        <div class="menu">
-            <a href="index.html" class="menu-activo">Inicio</a>
+        <div class="menu" id="menu-principal">
+            <a href="index.html" class="menu-activo" aria-current="page">Inicio</a>
             <a href="nosotros.html">Nosotros</a>
             <a href="avisos.html">Avisos</a>
             <a href="documentos.html">Documentos</a>
             <a href="contacto.html">Contacto</a>
         </div>
         <a href="contacto.html" class="boton-contacto">Contáctanos</a>
+        <!-- Botón del menú en celulares y tabletas (se controla desde menu.js). -->
+        <button type="button" class="menu-boton" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
+            <span></span><span></span><span></span>
+        </button>
     </nav>
 
     <!-- Portada principal. El canvas es dibujado y animado desde script.js. -->
@@ -33,17 +56,18 @@
                 Prestamos el servicio de acueducto con responsabilidad,
                 participación comunitaria y protección del medioambiente.
             </p>
-            <a href="nosotros.html" class="boton-principal">Conoce ASDAR</a>
+            <div class="hero-acciones">
+                <a href="nosotros.html" class="boton-principal">Conoce ASDAR</a>
+                <a href="#reportar" class="boton-secundario">Reportar un daño</a>
+            </div>
         </div>
     </header>
 
     <!-- Accesos rápidos a las gestiones e información más consultadas por la comunidad. -->
     <section class="servicios">
-        <div class="servicios-encabezado">
+        <div class="servicios-encabezado" data-aparecer>
             <p class="seccion-etiqueta">Servicios a la comunidad</p>
-
             <h2>Información y gestiones a tu alcance</h2>
-
             <p class="servicios-introduccion">
                 Encuentra rápidamente información sobre el servicio,
                 reportes, documentos y novedades de ASDAR.
@@ -51,48 +75,42 @@
         </div>
 
         <div class="servicios-grid">
-            <article class="servicio-tarjeta">
+            <article class="servicio-tarjeta" data-aparecer style="--retraso: 0ms">
                 <div class="servicio-icono">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M12 2.5C12 2.5 6.5 9 6.5 14A5.5 5.5 0 0 0 17.5 14C17.5 9 12 2.5 12 2.5Z"></path>
                         <path d="M9.5 15.2C9.8 16.5 10.8 17.3 12.2 17.5"></path>
                     </svg>
                 </div>
-
                 <h3>Servicio de acueducto</h3>
-
                 <p>
                     Conoce cómo ASDAR administra, mantiene y mejora
                     la prestación del servicio en La Rápida.
                 </p>
-
                 <a href="nosotros.html" class="servicio-enlace">
                     Conocer el servicio
                     <span aria-hidden="true">→</span>
                 </a>
             </article>
 
-            <article class="servicio-tarjeta">
+            <article class="servicio-tarjeta" data-aparecer style="--retraso: 90ms">
                 <div class="servicio-icono servicio-icono-verde">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M14.7 6.3A4 4 0 0 0 9.3 11.7L3.5 17.5A2.1 2.1 0 0 0 6.5 20.5L12.3 14.7A4 4 0 0 0 17.7 9.3L15 12L12 9L14.7 6.3Z"></path>
                     </svg>
                 </div>
-
                 <h3>Reportar un daño</h3>
-
                 <p>
                     Informa sobre fugas, daños en las redes o situaciones
                     que puedan afectar el suministro de agua.
                 </p>
-
-                <a href="contacto.html" class="servicio-enlace">
+                <a href="#reportar" class="servicio-enlace">
                     Realizar un reporte
                     <span aria-hidden="true">→</span>
                 </a>
             </article>
 
-            <article class="servicio-tarjeta">
+            <article class="servicio-tarjeta" data-aparecer style="--retraso: 180ms">
                 <div class="servicio-icono">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M6 2.5H14L19 7.5V21.5H6V2.5Z"></path>
@@ -101,21 +119,18 @@
                         <path d="M9 16H16"></path>
                     </svg>
                 </div>
-
                 <h3>Documentos</h3>
-
                 <p>
                     Consulta estatutos, reglamentos, informes y otros
                     documentos importantes de la asociación.
                 </p>
-
                 <a href="documentos.html" class="servicio-enlace">
                     Consultar documentos
                     <span aria-hidden="true">→</span>
                 </a>
             </article>
 
-            <article class="servicio-tarjeta">
+            <article class="servicio-tarjeta" data-aparecer style="--retraso: 270ms">
                 <div class="servicio-icono servicio-icono-verde">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M4 13V9L16 4V18L4 13Z"></path>
@@ -124,19 +139,138 @@
                         <path d="M6 14L7.5 20H11L9.5 15"></path>
                     </svg>
                 </div>
-
                 <h3>Avisos a la comunidad</h3>
-
                 <p>
                     Revisa información sobre mantenimientos, reuniones,
                     suspensiones programadas y actividades comunitarias.
                 </p>
-
                 <a href="avisos.html" class="servicio-enlace">
                     Consultar avisos
                     <span aria-hidden="true">→</span>
                 </a>
             </article>
+        </div>
+    </section>
+
+    <!-- Presentación de la planta de tratamiento y datos clave de la asociación. -->
+    <section class="inicio-planta" aria-labelledby="planta-titulo">
+        <div class="inicio-planta-contenido">
+            <figure class="inicio-planta-foto" data-aparecer>
+                <img src="Img/planta-asdar-principal.jpg" width="1400" height="1050" loading="lazy"
+                     alt="Planta de tratamiento de ASDAR con sus tanques de almacenamiento, rodeada de bosque en La Rápida">
+                <figcaption>
+                    <span class="inicio-planta-sello" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.5C12 2.5 6.5 9 6.5 14A5.5 5.5 0 0 0 17.5 14C17.5 9 12 2.5 12 2.5Z"></path></svg>
+                    </span>
+                    <span><strong>Planta de tratamiento</strong>La Rápida, Caldas · Antioquia</span>
+                </figcaption>
+            </figure>
+
+            <div class="inicio-planta-texto" data-aparecer style="--retraso: 120ms">
+                <p class="seccion-etiqueta">Así trabajamos</p>
+                <h2 id="planta-titulo">De la montaña a tu casa, con manos de la comunidad</h2>
+                <p>
+                    Desde la fuente hasta cada hogar, ASDAR cuida la planta de tratamiento,
+                    mantiene las redes y protege la microcuenca para que el agua llegue a
+                    La Rápida en las mejores condiciones posibles.
+                </p>
+                <p>
+                    Somos una entidad comunitaria sin ánimo de lucro: el servicio lo
+                    sostenemos entre todos los suscriptores.
+                </p>
+
+                <dl class="inicio-cifras">
+                    <div>
+                        <dt>2007</dt>
+                        <dd>Año de fundación, el 27 de julio, por iniciativa de la comunidad.</dd>
+                    </div>
+                    <div>
+                        <dt>100%</dt>
+                        <dd>Comunitaria y sin ánimo de lucro.</dd>
+                    </div>
+                    <div>
+                        <dt>2050</dt>
+                        <dd>Nuestra visión: sostener y fortalecer el servicio.</dd>
+                    </div>
+                </dl>
+
+                <a href="nosotros.html" class="enlace-flecha">
+                    Conoce nuestra historia <span aria-hidden="true">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aviso destacado: resume en el Inicio el aviso oficial publicado en Avisos. -->
+    <section class="inicio-aviso" aria-labelledby="aviso-titulo">
+        <div class="inicio-aviso-contenido">
+            <figure class="inicio-aviso-imagen" data-aparecer>
+                <img src="Img/aviso-fenomeno-del-nino-web.jpg" width="900" height="900" loading="lazy"
+                     alt="Pieza de ASDAR: El Fenómeno del Niño llegó, debemos unirnos en torno al ahorro de agua">
+            </figure>
+
+            <div class="inicio-aviso-texto" data-aparecer style="--retraso: 120ms">
+                <p class="inicio-aviso-estado"><span class="franja-punto" aria-hidden="true"></span>Aviso oficial vigente</p>
+                <h2 id="aviso-titulo">El Fenómeno del Niño llegó: cuidemos juntos el agua</h2>
+                <p class="inicio-aviso-intro">
+                    Pequeñas acciones diarias generan grandes cambios para tu bolsillo
+                    y para el planeta. Así puedes ayudar desde casa:
+                </p>
+
+                <ul class="inicio-consejos">
+                    <li>
+                        <span class="inicio-consejo-icono" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><path d="M5 8H14A4 4 0 0 1 18 12V14"></path><path d="M3 6V10"></path><path d="M18 17V21"></path><path d="M15 19H21"></path></svg>
+                        </span>
+                        Cierra bien las llaves
+                    </li>
+                    <li>
+                        <span class="inicio-consejo-icono" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><path d="M14.7 6.3A4 4 0 0 0 9.3 11.7L3.5 17.5A2.1 2.1 0 0 0 6.5 20.5L12.3 14.7A4 4 0 0 0 17.7 9.3L15 12L12 9L14.7 6.3Z"></path></svg>
+                        </span>
+                        Repara las fugas a tiempo
+                    </li>
+                    <li>
+                        <span class="inicio-consejo-icono" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.5C12 2.5 6.5 9 6.5 14A5.5 5.5 0 0 0 17.5 14C17.5 9 12 2.5 12 2.5Z"></path><path d="M4 4L20 20"></path></svg>
+                        </span>
+                        Evita el desperdicio
+                    </li>
+                </ul>
+
+                <div class="inicio-pago">
+                    <span class="inicio-pago-icono" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M7 2V8"></path><path d="M17 2V8"></path><path d="M3 10H21"></path></svg>
+                    </span>
+                    <p><strong>Recuerda:</strong> el pago del servicio se realiza todos los fines de semana. Estar al día nos permite seguir mejorando el acueducto.</p>
+                </div>
+
+                <a href="avisos.html" class="boton-claro">Ver todos los avisos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Llamado a reportar daños: enlaces directos a teléfono y WhatsApp. -->
+    <section class="inicio-reporte" id="reportar" aria-labelledby="reporte-titulo">
+        <div class="inicio-reporte-contenido" data-aparecer>
+            <div>
+                <p class="seccion-etiqueta">¿Viste una fuga o un daño?</p>
+                <h2 id="reporte-titulo">Repórtalo y lo atendemos lo antes posible</h2>
+                <p>
+                    Avísanos sobre fugas, tubos rotos o cualquier situación que afecte
+                    el suministro. Si puedes, envía una foto y la ubicación por WhatsApp.
+                </p>
+            </div>
+            <div class="inicio-reporte-acciones">
+                <a href="https://wa.me/573117963193" target="_blank" rel="noopener noreferrer" class="boton-whatsapp-inicio">
+                    <img src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="" width="22" height="22">
+                    Escribir por WhatsApp
+                </a>
+                <a href="tel:+573117963193" class="boton-telefono">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3H4.5A1.5 1.5 0 0 0 3 4.5C3 13.6 10.4 21 19.5 21A1.5 1.5 0 0 0 21 19.5V17L16.8 16L15.5 19C11.1 17.4 6.6 12.9 5 8.5L8 7.2L7 3Z"></path></svg>
+                    Llamar al 311 796 3193
+                </a>
+            </div>
         </div>
     </section>
 
@@ -157,7 +291,8 @@
         </div>
     </footer>
 
-    <!-- El JavaScript se carga al final para que el HTML aparezca antes de iniciar la animación. -->
+    <!-- menu.js es compartido por todas las páginas; script.js anima la portada. -->
+    <script src="menu.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

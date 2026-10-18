@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASDAR | Nosotros</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Menú interno: la clase menu-activo identifica visualmente la página actual. -->
     <nav class="navegacion navegacion-interna">
         <a href="index.html" class="marca"><img src="Img/logo-asdar.png" alt="Logo de ASDAR" class="marca-logo"></a>
-        <div class="menu">
-            <a href="index.html">Inicio</a><a href="nosotros.html" class="menu-activo">Nosotros</a>
+        <div class="menu" id="menu-principal">
+            <a href="index.html">Inicio</a><a href="nosotros.html" class="menu-activo" aria-current="page">Nosotros</a>
             <a href="avisos.html">Avisos</a>
             <a href="documentos.html">Documentos</a><a href="contacto.html">Contacto</a>
         </div>
         <a href="contacto.html" class="boton-contacto">Contáctanos</a>
-    </nav>
+    <button type="button" class="menu-boton" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span></button></nav>
 
     <!-- Portada de Nosotros: combina la fotografía principal con la presentación de la asociación. -->
     <header class="pagina-encabezado pagina-encabezado-nosotros">
@@ -354,6 +354,8 @@
     </div></footer>
     <!-- Controla de forma independiente cada galería fotográfica de esta página. -->
     <script src="nosotros.js"></script>
+    <!-- Menú móvil y funciones compartidas. -->
+    <script src="menu.js"></script>
 </body>
 </html>
 
