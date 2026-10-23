@@ -298,6 +298,11 @@ function dibujarHexagonos() {
 
         ctx.stroke();
     }
+
+    /*
+        Por último dibujamos las ondas de agua activas.
+    */
+    dibujarOndas();
 }
 
 
@@ -437,5 +442,277 @@ window.addEventListener("resize", function () {
 /*
     Dibujamos una primera vez sin esperar
     la carga completa de la página.
+    (La llamada está al final del archivo, después de
+    preparar las ondas, porque el dibujo las necesita.)
 */
+
+// =========================================
+// ONDAS DE AGUA AL TOCAR LA PORTADA
+// =========================================
+
+/*
+    Cada toque o clic crea una onda que se expande por la
+    cuadrícula, como cuando cae una gota en el agua.
+    Guardamos las ondas activas con su centro y su hora de inicio.
+*/
+const ondas = [];
+
+// Velocidad de la onda en píxeles por milisegundo.
+const VELOCIDAD_ONDA = 0.5;
+
+// Tiempo que dura cada onda en milisegundos.
+const DURACION_ONDA = 1700;
+
+// Grosor del anillo de la onda.
+const GROSOR_ONDA = 60;
+
+// Respetamos a quienes prefieren menos movimiento.
+const prefiereMenosMovimiento =
+    window.matchMedia("(prefers-reduced-motion: reduce)");
+
+let animandoOndas = false;
+
+
+function dibujarOndas() {
+    const ahora = performance.now();
+
+    for (const onda of ondas) {
+        const tiempo = ahora - onda.inicio;
+        const radio = tiempo * VELOCIDAD_ONDA;
+
+        // La onda se desvanece a medida que pasa el tiempo.
+        const desvanecido = 1 - tiempo / DURACION_ONDA;
+
+        if (desvanecido <= 0) continue;
+
+        for (const hexagono of hexagonos) {
+            const distancia = Math.hypot(
+                hexagono.x - onda.x,
+                hexagono.y - onda.y
+            );
+
+            // Qué tan cerca está el hexágono del anillo de la onda.
+            const cercania =
+                1 - Math.abs(distancia - radio) / GROSOR_ONDA;
+
+            if (cercania <= 0) continue;
+
+            const intensidad = cercania * desvanecido;
+
+            crearFormaHexagono(
+                hexagono.x,
+                hexagono.y,
+                tamañoHexagono - 2
+            );
+
+            ctx.fillStyle =
+                "rgba(0, 168, 232, " + (0.13 * intensidad) + ")";
+            ctx.fill();
+
+            ctx.strokeStyle =
+                "rgba(0, 112, 192, " + (0.6 * intensidad) + ")";
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+        }
+    }
+}
+
+
+function animarOndas() {
+    const ahora = performance.now();
+
+    // Quitamos las ondas que ya terminaron.
+    for (let i = ondas.length - 1; i >= 0; i--) {
+        if (ahora - ondas[i].inicio > DURACION_ONDA) {
+            ondas.splice(i, 1);
+        }
+    }
+
+    dibujarHexagonos();
+
+    if (ondas.length > 0) {
+        requestAnimationFrame(animarOndas);
+    } else {
+        animandoOndas = false;
+    }
+}
+
+
+function crearOnda(x, y) {
+    if (prefiereMenosMovimiento.matches) return;
+
+    // Máximo cinco ondas a la vez para no recargar el dibujo.
+    if (ondas.length >= 5) ondas.shift();
+
+    ondas.push({
+        x: x,
+        y: y,
+        inicio: performance.now()
+    });
+
+    if (!animandoOndas) {
+        animandoOndas = true;
+        requestAnimationFrame(animarOndas);
+    }
+}
+
+
+hero.addEventListener("pointerdown", function (evento) {
+    /*
+        Si la persona toca un botón o enlace, no creamos la onda
+        para no distraer de la acción que eligió.
+    */
+    if (evento.target.closest("a, button")) return;
+
+    const posicionCanvas = canvas.getBoundingClientRect();
+
+    crearOnda(
+        (evento.clientX - posicionCanvas.left)
+            * (canvas.width / posicionCanvas.width),
+        (evento.clientY - posicionCanvas.top)
+            * (canvas.height / posicionCanvas.height)
+    );
+});
+
+
+/*
+    Una primera onda suave al cargar invita a interactuar.
+*/
+window.setTimeout(function () {
+    crearOnda(canvas.width / 2, canvas.height * 0.45);
+}, 900);
+
+
+// =========================================
+// RECORRIDO DEL AGUA (GOTA QUE BAJA CON EL SCROLL)
+// =========================================
+
+/*
+    Medimos cuánto ha avanzado la persona dentro del recorrido
+    (de 0 a 1) y lo guardamos en la variable de CSS --avance.
+    El CSS usa ese valor para mover la gota y llenar la línea.
+    Cada etapa recibe la clase "alcanzada" cuando la gota llega a ella.
+*/
+(function () {
+    const recorrido = document.querySelector("[data-recorrido]");
+    if (!recorrido) return;
+
+    const etapas = Array.from(recorrido.querySelectorAll(".recorrido-etapa"));
+    let pendiente = false;
+
+    function actualizar() {
+        pendiente = false;
+
+        // Punto de referencia: un poco por debajo de la mitad de la pantalla.
+        const referencia = window.innerHeight * 0.55;
+        const medidas = recorrido.getBoundingClientRect();
+
+        const avance = Math.min(
+            Math.max((referencia - medidas.top) / medidas.height, 0),
+            1
+        );
+
+        recorrido.style.setProperty("--avance", avance.toFixed(4));
+
+        etapas.forEach(function (etapa) {
+            const punto = etapa.querySelector(".recorrido-etapa-punto");
+            const posicion = punto.getBoundingClientRect().top;
+            etapa.classList.toggle("alcanzada", posicion < referencia);
+        });
+    }
+
+    function pedirActualizacion() {
+        if (!pendiente) {
+            pendiente = true;
+            requestAnimationFrame(actualizar);
+        }
+    }
+
+    if (prefiereMenosMovimiento.matches) {
+        // Sin animación: mostramos el recorrido completo.
+        recorrido.classList.add("recorrido-estatico");
+        etapas.forEach(function (etapa) {
+            etapa.classList.add("alcanzada");
+        });
+        return;
+    }
+
+    window.addEventListener("scroll", pedirActualizacion, { passive: true });
+    window.addEventListener("resize", pedirActualizacion);
+    actualizar();
+})();
+
+
+// =========================================
+// CIFRAS QUE CUENTAN
+// =========================================
+
+/*
+    data-contador="anios" calcula los años desde la fundación
+    (27 de julio de 2007), así la cifra se actualiza sola cada año.
+    data-contador="100" (o cualquier número) cuenta hasta ese valor.
+*/
+(function () {
+    const contadores = document.querySelectorAll("[data-contador]");
+    if (!contadores.length) return;
+
+    function aniosDesdeFundacion() {
+        const hoy = new Date();
+        const fundacion = new Date(2007, 6, 27); // Los meses empiezan en 0: 6 = julio.
+        let anios = hoy.getFullYear() - fundacion.getFullYear();
+
+        const aunNoCumple =
+            hoy.getMonth() < fundacion.getMonth() ||
+            (hoy.getMonth() === fundacion.getMonth() &&
+                hoy.getDate() < fundacion.getDate());
+
+        if (aunNoCumple) anios--;
+        return anios;
+    }
+
+    function valorFinal(elemento) {
+        const tipo = elemento.dataset.contador;
+        return tipo === "anios" ? aniosDesdeFundacion() : Number(tipo);
+    }
+
+    function contar(elemento) {
+        const final = valorFinal(elemento);
+        const duracion = 1400;
+        const inicio = performance.now();
+
+        function paso(ahora) {
+            const progreso = Math.min((ahora - inicio) / duracion, 1);
+            // Suavizado: empieza rápido y frena al final.
+            const suave = 1 - Math.pow(1 - progreso, 3);
+            elemento.textContent = Math.round(final * suave);
+            if (progreso < 1) requestAnimationFrame(paso);
+        }
+
+        requestAnimationFrame(paso);
+    }
+
+    if (prefiereMenosMovimiento.matches || !("IntersectionObserver" in window)) {
+        contadores.forEach(function (elemento) {
+            elemento.textContent = valorFinal(elemento);
+        });
+        return;
+    }
+
+    const observador = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (entrada) {
+            if (entrada.isIntersecting) {
+                contar(entrada.target);
+                observador.unobserve(entrada.target);
+            }
+        });
+    }, { threshold: 0.6 });
+
+    contadores.forEach(function (elemento) {
+        elemento.textContent = "0";
+        observador.observe(elemento);
+    });
+})();
+
+
+// Primer dibujo de la cuadrícula.
 ajustarCanvas();

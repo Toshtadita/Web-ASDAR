@@ -13,27 +13,53 @@
         <div class="menu" id="menu-principal">
             <a href="index.html">Inicio</a><a href="nosotros.html" class="menu-activo" aria-current="page">Nosotros</a>
             <a href="avisos.html">Avisos</a>
-            <a href="documentos.html">Documentos</a><a href="contacto.html">Contacto</a>
+            <a href="documentos.html">Documentos</a>
         </div>
         <a href="contacto.html" class="boton-contacto">Contáctanos</a>
     <button type="button" class="menu-boton" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span></button></nav>
 
-    <!-- Portada de Nosotros: combina la fotografía principal con la presentación de la asociación. -->
-    <header class="pagina-encabezado pagina-encabezado-nosotros">
-        <p class="seccion-etiqueta">Nuestra asociación</p>
-        <h1>Conoce a ASDAR</h1>
-        <p>Una organización comunitaria comprometida con el agua y el bienestar de La Rápida.</p>
-        <div class="hero-quienes">
-            <h2>¿Quiénes somos?</h2>
-            <p>
-                ASDAR es la Asociación de Suscriptores de Acueducto La Rápida,
-                una entidad comunitaria sin ánimo de lucro dedicada a administrar,
-                operar, mantener y mejorar el servicio de acueducto.
-            </p>
+    <!-- Portada con efecto de expansión al hacer scroll (controlado desde nosotros.js).
+         La sección es más alta que la pantalla; la escena interna se queda fija (sticky)
+         mientras la persona baja, y la foto de la planta crece hasta llenar la pantalla. -->
+    <header class="expansion" data-expansion aria-labelledby="nosotros-titulo" data-mascota="¡Bienvenido a Nosotros! Baja despacio y mira cómo la foto de la planta crece hasta llenar la pantalla.">
+        <div class="expansion-escena">
+            <!-- Fondo: el nacimiento del agua. Se desvanece a medida que crece la foto. -->
+            <div class="expansion-fondo" aria-hidden="true">
+                <img src="Img/recorrido-agua/sam_0690-web.jpg" alt="">
+            </div>
+
+            <!-- Foto que se expande: la planta de tratamiento. -->
+            <figure class="expansion-media">
+                <img src="Img/planta-asdar-principal.jpg" alt="Planta de tratamiento de ASDAR rodeada de bosque en La Rápida">
+            </figure>
+
+            <div class="expansion-textos">
+                <p class="seccion-etiqueta expansion-etiqueta">Nuestra asociación</p>
+                <h1 id="nosotros-titulo" class="expansion-titulo">
+                    <span class="expansion-izquierda">Conoce</span>
+                    <span class="expansion-derecha">a ASDAR</span>
+                </h1>
+                <p class="expansion-pista" aria-hidden="true">Desliza para descubrir <span>↓</span></p>
+            </div>
+
+            <!-- Aparece cuando la foto termina de expandirse. -->
+            <div class="hero-quienes expansion-contenido">
+                <h2>¿Quiénes somos?</h2>
+                <p>
+                    ASDAR es la Asociación de Suscriptores de Acueducto La Rápida,
+                    una entidad comunitaria sin ánimo de lucro dedicada a administrar,
+                    operar, mantener y mejorar el servicio de acueducto.
+                </p>
+                <p class="expansion-lema">Desde el nacimiento del agua, a la planta, a tu casa.</p>
+            </div>
+
+            <div class="ola ola-hacia-historia" aria-hidden="true">
+                <svg viewBox="0 0 2880 80" preserveAspectRatio="none"><path class="ola-fondo" d="M0 46 Q 180 16 360 46 T 720 46 T 1080 46 T 1440 46 T 1800 46 T 2160 46 T 2520 46 T 2880 46 V80 H0 Z"></path><path d="M0 52 Q 180 76 360 52 T 720 52 T 1080 52 T 1440 52 T 1800 52 T 2160 52 T 2520 52 T 2880 52 V80 H0 Z"></path></svg>
+            </div>
         </div>
     </header>
     <!-- Historia de ASDAR: la placa conserva la fecha de fundación y reconoce a quienes iniciaron la asociación. -->
-    <section class="historia-asdar" aria-labelledby="historia-titulo">
+    <section class="historia-asdar" aria-labelledby="historia-titulo" data-mascota="Esta placa recuerda el 27 de julio de 2007, el día en que la comunidad fundó ASDAR. ¡Todo empezó con vecinos organizados!">
         <div class="historia-contenido">
             <figure class="historia-placa">
                 <!-- loading="lazy" evita cargar esta fotografía hasta que el visitante se acerque a la sección. -->
@@ -59,8 +85,50 @@
         </div>
     </section>
 
+
+    <!-- Línea de tiempo: resume los momentos de ASDAR y enlaza con las secciones de abajo.
+         Para poner el año de un hito, cambia el texto de su <span class="linea-marca">. -->
+    <section class="linea-tiempo" aria-labelledby="linea-titulo" data-mascota="Esta es nuestra historia en cinco momentos. Toca «Ver fotos» para saltar a las galerías.">
+        <div class="linea-tiempo-contenido">
+            <div class="linea-tiempo-encabezado" data-aparecer>
+                <p class="recorrido-etiqueta">Nuestro camino</p>
+                <h2 id="linea-titulo">Una historia que seguimos escribiendo</h2>
+            </div>
+
+            <ol class="linea-tiempo-lista" data-aparecer>
+                <li>
+                    <span class="linea-marca">2007</span>
+                    <h3>Nace ASDAR</h3>
+                    <p>El 27 de julio la comunidad se organiza para cuidar y fortalecer su acueducto.</p>
+                </li>
+                <li>
+                    <span class="linea-marca">Educación</span>
+                    <h3>Conocer la fuente</h3>
+                    <p>Recorridos al nacimiento del agua, capacitaciones y un mapa ambiental hecho por la comunidad.</p>
+                    <a href="#recorrido-titulo" class="linea-enlace">Ver fotos <span aria-hidden="true">↓</span></a>
+                </li>
+                <li>
+                    <span class="linea-marca">Emergencia</span>
+                    <h3>Respuesta ante las lluvias</h3>
+                    <p>Atención inmediata y obras de contención para proteger la planta de tratamiento.</p>
+                    <a href="#emergencia-titulo" class="linea-enlace">Ver fotos <span aria-hidden="true">↓</span></a>
+                </li>
+                <li>
+                    <span class="linea-marca">Hoy</span>
+                    <h3>Un servicio que se fortalece</h3>
+                    <p>Cuidamos la planta, mantenemos las redes y mantenemos informada a la comunidad.</p>
+                </li>
+                <li class="linea-futuro">
+                    <span class="linea-marca">2050</span>
+                    <h3>Nuestra visión</h3>
+                    <p>Sostener y fortalecer el servicio, avanzar con la tecnología y cumplir los requerimientos legales.</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
     <!-- Relato fotográfico sobre educación ambiental y el recorrido hacia el nacimiento del agua. -->
-    <section class="recorrido-agua" aria-labelledby="recorrido-titulo">
+    <section class="recorrido-agua" aria-labelledby="recorrido-titulo" data-mascota="En estos recorridos la comunidad conoce el lugar donde nazco. Toca una foto para verla en grande.">
         <div class="recorrido-contenido">
             <div class="recorrido-presentacion">
                 <div class="recorrido-texto">
@@ -94,10 +162,16 @@
                 </div>
 
                 <div class="galeria-ventana" aria-live="off">
-                    <!-- Controles superpuestos: las entidades HTML evitan que las flechas se dañen por codificación. -->
+                    <!-- Controles: una cápsula de vidrio con flecha anterior, contador y flecha siguiente.
+                         El contador (data-contador-fotos) lo actualiza nosotros.js. -->
                     <div class="galeria-controles">
-                        <button type="button" class="galeria-flecha" data-anterior aria-label="Fotografía anterior">&larr;</button>
-                        <button type="button" class="galeria-flecha" data-siguiente aria-label="Fotografía siguiente">&rarr;</button>
+                        <button type="button" class="galeria-flecha" data-anterior aria-label="Fotografía anterior">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6L8.5 12L14.5 18"></path></svg>
+                        </button>
+                        <span class="galeria-contador" data-contador-fotos aria-hidden="true">1 / 7</span>
+                        <button type="button" class="galeria-flecha" data-siguiente aria-label="Fotografía siguiente">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6L15.5 12L9.5 18"></path></svg>
+                        </button>
                     </div>
                     <figure class="galeria-foto activa">
                         <img src="Img/recorrido-agua/sam_0692.jpg" alt="Participantes caminando por un sendero rodeado de bosque">
@@ -135,7 +209,7 @@
     </section>
 
     <!-- Memoria de la respuesta comunitaria ante lluvias y afectaciones del acueducto. -->
-    <section class="memoria-emergencia" aria-labelledby="emergencia-titulo">
+    <section class="memoria-emergencia" aria-labelledby="emergencia-titulo" data-mascota="Cuando las lluvias fuertes dañaron el terreno, el equipo trabajó para proteger la planta. Pasa las fotos y mira cómo quedó.">
         <div class="recorrido-contenido">
             <div class="emergencia-presentacion">
                 <figure class="emergencia-destacada">
@@ -177,10 +251,16 @@
                 </div>
 
                 <div class="galeria-ventana" aria-live="off">
-                    <!-- Controles superpuestos: las entidades HTML evitan que las flechas se dañen por codificación. -->
+                    <!-- Controles: una cápsula de vidrio con flecha anterior, contador y flecha siguiente.
+                         El contador (data-contador-fotos) lo actualiza nosotros.js. -->
                     <div class="galeria-controles">
-                        <button type="button" class="galeria-flecha" data-anterior aria-label="Fotografía anterior">&larr;</button>
-                        <button type="button" class="galeria-flecha" data-siguiente aria-label="Fotografía siguiente">&rarr;</button>
+                        <button type="button" class="galeria-flecha" data-anterior aria-label="Fotografía anterior">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6L8.5 12L14.5 18"></path></svg>
+                        </button>
+                        <span class="galeria-contador" data-contador-fotos aria-hidden="true">1 / 7</span>
+                        <button type="button" class="galeria-flecha" data-siguiente aria-label="Fotografía siguiente">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6L15.5 12L9.5 18"></path></svg>
+                        </button>
                     </div>
                     <figure class="galeria-foto activa">
                         <img src="Img/emergencia-lluvias/sam_1055.jpg" alt="Equipo de trabajo inspeccionando y limpiando el cauce después de las lluvias">
@@ -218,7 +298,7 @@
     </section>
 
     <!-- Misión, visión y compromiso: resume los principios que orientan a ASDAR. -->
-    <section class="identidad">
+    <section class="identidad" data-mascota="Nuestra misión, la visión 2050 y el compromiso ambiental: esto es lo que guía todo lo que hace ASDAR.">
 
         <div class="identidad-contenido">
 
@@ -263,7 +343,6 @@
 
                     </div>
 
-                    <p class="identidad-numero">01</p>
 
                     <h3>Misión</h3>
 
@@ -295,7 +374,6 @@
 
                     </div>
 
-                    <p class="identidad-numero">02</p>
 
                     <h3>Visión 2050</h3>
 
@@ -327,7 +405,6 @@
 
                     </div>
 
-                    <p class="identidad-numero">03</p>
 
                     <h3>Compromiso ambiental</h3>
 
@@ -356,6 +433,8 @@
     <script src="nosotros.js"></script>
     <!-- Menú móvil y funciones compartidas. -->
     <script src="menu.js"></script>
+    <!-- Gotita, la mascota: dice el texto de data-mascota de cada sección. -->
+    <script src="mascota.js"></script>
 </body>
 </html>
 

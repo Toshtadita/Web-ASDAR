@@ -19,7 +19,6 @@
             <span class="franja-etiqueta"><span class="franja-punto" aria-hidden="true"></span>Aviso vigente</span>
             <p>
                 <strong>Fenómeno del Niño:</strong> cuidemos juntos el agua.
-                <span class="franja-pago">El pago del servicio se realiza <strong>todos los fines de semana</strong>.</span>
             </p>
             <a href="avisos.html" class="franja-enlace">Ver aviso <span aria-hidden="true">→</span></a>
         </div>
@@ -36,7 +35,6 @@
             <a href="nosotros.html">Nosotros</a>
             <a href="avisos.html">Avisos</a>
             <a href="documentos.html">Documentos</a>
-            <a href="contacto.html">Contacto</a>
         </div>
         <a href="contacto.html" class="boton-contacto">Contáctanos</a>
         <!-- Botón del menú en celulares y tabletas (se controla desde menu.js). -->
@@ -46,7 +44,7 @@
     </nav>
 
     <!-- Portada principal. El canvas es dibujado y animado desde script.js. -->
-    <header class="hero">
+    <header class="hero" data-mascota="¡Hola! Soy Gotita, la mascota de ASDAR. Toca el fondo y mira cómo hago ondas. Baja conmigo y te muestro la página.">
         <canvas id="fondo-interactivo"></canvas>
         <div class="hero-contenido">
             <img src="Img/logo-asdar.png" alt="Logo de ASDAR" class="hero-logo">
@@ -63,8 +61,27 @@
         </div>
     </header>
 
+    <!-- Cifras de ASDAR: tarjeta que se monta sobre el borde de la portada. -->
+    <section class="cifras-banda" aria-label="ASDAR en cifras" data-mascota="ASDAR nació en 2007 gracias a la comunidad de La Rápida. ¡Es 100 % comunitaria y sin ánimo de lucro!">
+        <dl class="cifras-banda-lista" data-aparecer>
+            <div>
+                <!-- data-contador="anios" calcula automáticamente los años desde la fundación. -->
+                <dt><span data-contador="anios">19</span> años</dt>
+                <dd>De servicio a la comunidad, desde el 27 de julio de 2007.</dd>
+            </div>
+            <div>
+                <dt><span data-contador="100">100</span>%</dt>
+                <dd>Comunitaria y sin ánimo de lucro.</dd>
+            </div>
+            <div>
+                <dt>2050</dt>
+                <dd>Nuestra visión: sostener y fortalecer el servicio.</dd>
+            </div>
+        </dl>
+    </section>
+
     <!-- Accesos rápidos a las gestiones e información más consultadas por la comunidad. -->
-    <section class="servicios">
+    <section class="servicios" data-mascota="Estos son los atajos: conoce el servicio, calcula cuánta agua gastas, consulta los documentos o revisa los avisos.">
         <div class="servicios-encabezado" data-aparecer>
             <p class="seccion-etiqueta">Servicios a la comunidad</p>
             <h2>Información y gestiones a tu alcance</h2>
@@ -96,16 +113,22 @@
             <article class="servicio-tarjeta" data-aparecer style="--retraso: 90ms">
                 <div class="servicio-icono servicio-icono-verde">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M14.7 6.3A4 4 0 0 0 9.3 11.7L3.5 17.5A2.1 2.1 0 0 0 6.5 20.5L12.3 14.7A4 4 0 0 0 17.7 9.3L15 12L12 9L14.7 6.3Z"></path>
+                        <rect x="5" y="2.5" width="14" height="19" rx="2.5"></rect>
+                        <path d="M8.5 6.5H15.5"></path>
+                        <path d="M8.5 11H9.5"></path>
+                        <path d="M14.5 11H15.5"></path>
+                        <path d="M8.5 15H9.5"></path>
+                        <path d="M14.5 15H15.5"></path>
+                        <path d="M8.5 18.5H15.5"></path>
                     </svg>
                 </div>
-                <h3>Reportar un daño</h3>
+                <h3>Calcula tu consumo</h3>
                 <p>
-                    Informa sobre fugas, daños en las redes o situaciones
-                    que puedan afectar el suministro de agua.
+                    Descubre cuánta agua usa tu hogar al día
+                    y cómo podrían ahorrar entre todos.
                 </p>
-                <a href="#reportar" class="servicio-enlace">
-                    Realizar un reporte
+                <a href="avisos.html#calculadora" class="servicio-enlace">
+                    Usar la calculadora
                     <span aria-hidden="true">→</span>
                 </a>
             </article>
@@ -152,57 +175,97 @@
         </div>
     </section>
 
-    <!-- Presentación de la planta de tratamiento y datos clave de la asociación. -->
-    <section class="inicio-planta" aria-labelledby="planta-titulo">
-        <div class="inicio-planta-contenido">
-            <figure class="inicio-planta-foto" data-aparecer>
-                <img src="Img/planta-asdar-principal.jpg" width="1400" height="1050" loading="lazy"
-                     alt="Planta de tratamiento de ASDAR con sus tanques de almacenamiento, rodeada de bosque en La Rápida">
-                <figcaption>
-                    <span class="inicio-planta-sello" aria-hidden="true">
-                        <svg viewBox="0 0 24 24"><path d="M12 2.5C12 2.5 6.5 9 6.5 14A5.5 5.5 0 0 0 17.5 14C17.5 9 12 2.5 12 2.5Z"></path></svg>
-                    </span>
-                    <span><strong>Planta de tratamiento</strong>La Rápida, Caldas · Antioquia</span>
-                </figcaption>
-            </figure>
 
-            <div class="inicio-planta-texto" data-aparecer style="--retraso: 120ms">
-                <p class="seccion-etiqueta">Así trabajamos</p>
-                <h2 id="planta-titulo">De la montaña a tu casa, con manos de la comunidad</h2>
-                <p>
-                    Desde la fuente hasta cada hogar, ASDAR cuida la planta de tratamiento,
-                    mantiene las redes y protege la microcuenca para que el agua llegue a
-                    La Rápida en las mejores condiciones posibles.
-                </p>
-                <p>
-                    Somos una entidad comunitaria sin ánimo de lucro: el servicio lo
-                    sostenemos entre todos los suscriptores.
-                </p>
+    <!-- Recorrido del agua: una gota baja por la línea a medida que la persona hace scroll
+         (controlado desde script.js). Cada etapa se ilumina cuando la gota llega a ella. -->
+    <section class="recorrido-gota" id="recorrido" aria-labelledby="recorrido-gota-titulo" data-mascota="¿Ves la gota que baja por la línea? ¡Esa soy yo! Acompáñame desde el nacimiento hasta tu casa.">
+        <div class="recorrido-gota-encabezado" data-aparecer>
+            <p class="seccion-etiqueta">El viaje del agua</p>
+            <h2 id="recorrido-gota-titulo">De la montaña a tu llave</h2>
+            <p>Baja por la página y acompaña a una gota en su recorrido hasta tu casa.</p>
+        </div>
 
-                <dl class="inicio-cifras">
-                    <div>
-                        <dt>2007</dt>
-                        <dd>Año de fundación, el 27 de julio, por iniciativa de la comunidad.</dd>
-                    </div>
-                    <div>
-                        <dt>100%</dt>
-                        <dd>Comunitaria y sin ánimo de lucro.</dd>
-                    </div>
-                    <div>
-                        <dt>2050</dt>
-                        <dd>Nuestra visión: sostener y fortalecer el servicio.</dd>
-                    </div>
-                </dl>
-
-                <a href="nosotros.html" class="enlace-flecha">
-                    Conoce nuestra historia <span aria-hidden="true">→</span>
-                </a>
+        <div class="recorrido-gota-camino" data-recorrido>
+            <div class="recorrido-gota-linea" aria-hidden="true">
+                <span class="recorrido-gota-relleno"></span>
+                <span class="recorrido-gota-gota">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.5C12 2.5 5.5 10 5.5 14.5A6.5 6.5 0 0 0 18.5 14.5C18.5 10 12 2.5 12 2.5Z"></path><path class="gota-brillo" d="M9 15C9.3 16.6 10.4 17.6 12 17.8"></path></svg>
+                </span>
             </div>
+
+            <ol class="recorrido-gota-etapas">
+                <li class="recorrido-etapa">
+                    <span class="recorrido-etapa-punto" aria-hidden="true"></span>
+                    <article class="recorrido-etapa-tarjeta">
+                        <img src="Img/recorrido-agua/sam_0696-web.jpg" width="900" height="675" loading="lazy" alt="Corriente de agua en el bosque, cerca del nacimiento">
+                        <div class="recorrido-etapa-texto">
+                            <p class="recorrido-etapa-numero">01 · El nacimiento</p>
+                            <h3>Donde todo comienza</h3>
+                            <p>En lo alto de la microcuenca de La Rápida, entre el bosque, nace el agua que llega a nuestros hogares.</p>
+                        </div>
+                    </article>
+                </li>
+
+                <li class="recorrido-etapa">
+                    <span class="recorrido-etapa-punto" aria-hidden="true"></span>
+                    <article class="recorrido-etapa-tarjeta">
+                        <img src="Img/recorrido-agua/sam_0695-web.jpg" width="900" height="675" loading="lazy" alt="Vegetación y musgo del bosque que protege la fuente">
+                        <div class="recorrido-etapa-texto">
+                            <p class="recorrido-etapa-numero">02 · La cuenca</p>
+                            <h3>Un bosque que la protege</h3>
+                            <p>La vegetación conserva la humedad y cuida la fuente. Por eso promovemos recorridos y educación ambiental: protegerla es tarea de todos.</p>
+                        </div>
+                    </article>
+                </li>
+
+                <li class="recorrido-etapa">
+                    <span class="recorrido-etapa-punto" aria-hidden="true"></span>
+                    <article class="recorrido-etapa-tarjeta">
+                        <img src="Img/planta-asdar-principal.jpg" width="1400" height="1050" loading="lazy" alt="Planta de tratamiento de ASDAR">
+                        <div class="recorrido-etapa-texto">
+                            <p class="recorrido-etapa-numero">03 · La planta</p>
+                            <h3>El agua se trata</h3>
+                            <p>En la planta de tratamiento el agua se prepara para llegar a la comunidad en las mejores condiciones posibles.</p>
+                        </div>
+                    </article>
+                </li>
+
+                <li class="recorrido-etapa">
+                    <span class="recorrido-etapa-punto" aria-hidden="true"></span>
+                    <article class="recorrido-etapa-tarjeta">
+                        <img src="Img/emergencia-lluvias/sam_1233-web.jpg" width="900" height="675" loading="lazy" alt="Obras de protección terminadas junto a la planta de tratamiento">
+                        <div class="recorrido-etapa-texto">
+                            <p class="recorrido-etapa-numero">04 · Tanques y redes</p>
+                            <h3>Cuidamos cada tramo</h3>
+                            <p>Mantenemos el sistema y respondemos ante lluvias, deslizamientos o daños para que el servicio no se detenga.</p>
+                        </div>
+                    </article>
+                </li>
+
+                <li class="recorrido-etapa recorrido-etapa-final">
+                    <span class="recorrido-etapa-punto" aria-hidden="true"></span>
+                    <article class="recorrido-etapa-tarjeta">
+                        <div class="recorrido-etapa-casa" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><path d="M3 11L12 3.5L21 11"></path><path d="M5.5 9.5V20.5H18.5V9.5"></path><path d="M12 12.5C12 12.5 9.8 15 9.8 16.4A2.2 2.2 0 0 0 14.2 16.4C14.2 15 12 12.5 12 12.5Z"></path></svg>
+                        </div>
+                        <div class="recorrido-etapa-texto">
+                            <p class="recorrido-etapa-numero">05 · Tu casa</p>
+                            <h3>Llega a tu llave</h3>
+                            <p>Aquí termina el viaje… y empieza tu parte: usar el agua con responsabilidad la cuida para todos.</p>
+                            <a href="avisos.html#calculadora" class="enlace-flecha">¿Cuánta agua gastas? Calcúlalo <span aria-hidden="true">→</span></a>
+                        </div>
+                    </article>
+                </li>
+            </ol>
+        </div>
+
+        <div class="ola ola-hacia-oscuro" aria-hidden="true">
+            <svg viewBox="0 0 2880 80" preserveAspectRatio="none"><path class="ola-fondo" d="M0 46 Q 180 16 360 46 T 720 46 T 1080 46 T 1440 46 T 1800 46 T 2160 46 T 2520 46 T 2880 46 V80 H0 Z"></path><path d="M0 52 Q 180 76 360 52 T 720 52 T 1080 52 T 1440 52 T 1800 52 T 2160 52 T 2520 52 T 2880 52 V80 H0 Z"></path></svg>
         </div>
     </section>
 
     <!-- Aviso destacado: resume en el Inicio el aviso oficial publicado en Avisos. -->
-    <section class="inicio-aviso" aria-labelledby="aviso-titulo">
+    <section class="inicio-aviso" aria-labelledby="aviso-titulo" data-mascota="Con el Fenómeno del Niño llueve menos. Cerrar bien la llave y arreglar las fugas hace una gran diferencia.">
         <div class="inicio-aviso-contenido">
             <figure class="inicio-aviso-imagen" data-aparecer>
                 <img src="Img/aviso-fenomeno-del-nino-web.jpg" width="900" height="900" loading="lazy"
@@ -248,10 +311,14 @@
                 <a href="avisos.html" class="boton-claro">Ver todos los avisos</a>
             </div>
         </div>
+
+        <div class="ola ola-hacia-claro" aria-hidden="true">
+            <svg viewBox="0 0 2880 80" preserveAspectRatio="none"><path class="ola-fondo" d="M0 46 Q 180 16 360 46 T 720 46 T 1080 46 T 1440 46 T 1800 46 T 2160 46 T 2520 46 T 2880 46 V80 H0 Z"></path><path d="M0 52 Q 180 76 360 52 T 720 52 T 1080 52 T 1440 52 T 1800 52 T 2160 52 T 2520 52 T 2880 52 V80 H0 Z"></path></svg>
+        </div>
     </section>
 
     <!-- Llamado a reportar daños: enlaces directos a teléfono y WhatsApp. -->
-    <section class="inicio-reporte" id="reportar" aria-labelledby="reporte-titulo">
+    <section class="inicio-reporte" id="reportar" aria-labelledby="reporte-titulo" data-mascota="¿Viste una fuga o un tubo roto? Escríbenos por WhatsApp con una foto y la ubicación. ¡Así llegamos más rápido!">
         <div class="inicio-reporte-contenido" data-aparecer>
             <div>
                 <p class="seccion-etiqueta">¿Viste una fuga o un daño?</p>
@@ -291,8 +358,10 @@
         </div>
     </footer>
 
-    <!-- menu.js es compartido por todas las páginas; script.js anima la portada. -->
+    <!-- menu.js es compartido por todas las páginas; script.js anima la portada; mascota.js controla a Gotita. -->
     <script src="menu.js"></script>
     <script src="script.js"></script>
+    <!-- Gotita, la mascota: dice el texto de data-mascota de cada sección. -->
+    <script src="mascota.js"></script>
 </body>
 </html>

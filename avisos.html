@@ -3,9 +3,9 @@
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ASDAR | Avisos</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head>
 <body>
     <!-- Navegación principal. menu-activo indica que el usuario está en Avisos. -->
-    <nav class="navegacion navegacion-interna"><a href="index.html" class="marca"><img src="Img/logo-asdar.png" alt="Logo de ASDAR" class="marca-logo"></a><div class="menu" id="menu-principal"><a href="index.html">Inicio</a><a href="nosotros.html">Nosotros</a><a href="avisos.html" class="menu-activo" aria-current="page">Avisos</a><a href="documentos.html">Documentos</a><a href="contacto.html">Contacto</a></div><a href="contacto.html" class="boton-contacto">Contáctanos</a><button type="button" class="menu-boton" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span></button></nav>
+    <nav class="navegacion navegacion-interna"><a href="index.html" class="marca"><img src="Img/logo-asdar.png" alt="Logo de ASDAR" class="marca-logo"></a><div class="menu" id="menu-principal"><a href="index.html">Inicio</a><a href="nosotros.html">Nosotros</a><a href="avisos.html" class="menu-activo" aria-current="page">Avisos</a><a href="documentos.html">Documentos</a></div><a href="contacto.html" class="boton-contacto">Contáctanos</a><button type="button" class="menu-boton" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span></button></nav>
     <!-- Contenedor de avisos oficiales, mantenimientos y actividades comunitarias. -->
-    <section id="avisos" class="avisos">
+    <section id="avisos" class="avisos" data-mascota="Aquí se publican los avisos oficiales: mantenimientos, reuniones y recordatorios. ¡El pago del servicio es todos los fines de semana!">
 
     <div class="avisos-contenido">
 
@@ -169,9 +169,84 @@
     </div>
 
 </section>
+
+    <!-- Calculadora de consumo: estima los litros que gasta un hogar al día (controlada desde calculadora.js). -->
+    <section class="calculadora" id="calculadora" aria-labelledby="calculadora-titulo" data-mascota="¡Mueve los controles! Te digo cuántos litros gasta tu casa al día y cómo podrían ahorrar.">
+        <div class="calculadora-contenido">
+            <div class="calculadora-encabezado" data-aparecer>
+                <p class="seccion-etiqueta">Calculadora</p>
+                <h2 id="calculadora-titulo">¿Cuánta agua gastas en casa?</h2>
+                <p>
+                    Mueve los controles según los hábitos de tu hogar y descubre
+                    un estimado de cuánta agua usan al día y cómo podrían ahorrar.
+                </p>
+            </div>
+
+            <div class="calculadora-grid" data-calculadora>
+                <form class="calculadora-controles" onsubmit="return false">
+                    <div class="calc-campo">
+                        <label for="calc-personas">Personas en el hogar</label>
+                        <output for="calc-personas" data-salida="personas">4</output>
+                        <input type="range" id="calc-personas" name="personas" min="1" max="10" step="1" value="4">
+                    </div>
+
+                    <div class="calc-campo">
+                        <label for="calc-ducha">Minutos de ducha por persona</label>
+                        <output for="calc-ducha" data-salida="ducha">10 min</output>
+                        <input type="range" id="calc-ducha" name="ducha" min="0" max="30" step="1" value="10">
+                    </div>
+
+                    <div class="calc-campo">
+                        <label for="calc-loza">Minutos lavando loza con la llave abierta (al día)</label>
+                        <output for="calc-loza" data-salida="loza">15 min</output>
+                        <input type="range" id="calc-loza" name="loza" min="0" max="60" step="5" value="15">
+                    </div>
+
+                    <div class="calc-campo">
+                        <label for="calc-ropa">Lavadas de ropa por semana</label>
+                        <output for="calc-ropa" data-salida="ropa">4</output>
+                        <input type="range" id="calc-ropa" name="ropa" min="0" max="14" step="1" value="4">
+                    </div>
+
+                    <label class="calc-interruptor">
+                        <input type="checkbox" name="cepillado" checked>
+                        <span class="calc-interruptor-control" aria-hidden="true"></span>
+                        <span>Dejamos la llave abierta mientras nos cepillamos</span>
+                    </label>
+                </form>
+
+                <div class="calculadora-resultado">
+                    <div class="calc-tanque" aria-hidden="true">
+                        <div class="calc-agua"></div>
+                    </div>
+
+                    <div class="calc-cifras" aria-live="polite">
+                        <p class="calc-total"><strong data-total>0</strong> <span>litros al día</span></p>
+                        <p class="calc-detalle"><span data-por-persona>0</span> litros por persona · <span data-mes>0</span> m³ al mes</p>
+                    </div>
+
+                    <ul class="calc-desglose" data-desglose></ul>
+
+                    <div class="calc-consejos">
+                        <h3>Ideas para ahorrar</h3>
+                        <ul data-consejos></ul>
+                    </div>
+                </div>
+            </div>
+
+            <p class="calc-nota">
+                Valores aproximados: una ducha gasta cerca de 10 litros por minuto, una llave abierta
+                unos 6 litros por minuto, una lavadora unos 80 litros por carga y cada descarga del
+                sanitario unos 6 litros. El consumo real depende de los aparatos de cada casa.
+            </p>
+        </div>
+    </section>
     <!-- Pie de página compartido con los enlaces principales. -->
     <footer class="pie-pagina"><div class="pie-contenido"><a href="index.html" class="pie-marca"><img src="Img/logo-asdar.png" alt="ASDAR" class="pie-logo"><span class="pie-marca-texto"><strong>ASDAR</strong><small>Acueducto La Rápida</small></span></a><div class="pie-enlaces"><a href="index.html">Inicio</a><a href="nosotros.html">Nosotros</a><a href="documentos.html">Documentos</a><a href="contacto.html">Contacto</a></div><p class="pie-legal">© 2026 ASDAR.<br>Todos los derechos reservados.</p></div></footer>
     <!-- Menú móvil y funciones compartidas. -->
     <script src="menu.js"></script>
+    <script src="calculadora.js"></script>
+    <!-- Gotita, la mascota: dice el texto de data-mascota de cada sección. -->
+    <script src="mascota.js"></script>
 </body>
 </html>
